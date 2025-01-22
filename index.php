@@ -12,9 +12,17 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard | Inventory</title>
+
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -51,7 +59,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard"></i></div>
                                 Stok Peralatan
@@ -79,10 +87,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Stock Peralatan</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Stock Peralatan</li>
-                        </ol>
+                        <h1 class="mt-4">Stok Peralatan</h1>
+                        <!-- <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Stok Peralatan</li>
+                        </ol> -->
                         <!-- <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
@@ -206,19 +214,28 @@
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
+                <h4 class="modal-title">Tambah Peralatan</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
                 <!-- Modal body -->
-                <div class="modal-body">
-                Modal body..
-                </div>
-                
+                <form method="post">
+                    <div class="modal-body">
+                        <input type="text" name="nama_peralatan" placeholder="Nama Peralatan" class="form-control" required>
+                        <br>
+                        <input type="text" name="deskripsi" placeholder="Deskripsi Peralatan" class="form-control" required>
+                        <br>
+                        <input type="number" name="stok" placeholder="Stok" class="form-control" required>
+                        <br>
+                        <button type="submit" class="btn btn-success" name="addnewperalatan"><b>Submit</b></button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+                    </div>
+                </form>
+
                 <!-- Modal footer -->
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+                </div> -->
                 
             </div>
             </div>

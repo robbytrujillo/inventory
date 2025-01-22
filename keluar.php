@@ -12,6 +12,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Peralatan Keluar | Inventory</title>
+
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
