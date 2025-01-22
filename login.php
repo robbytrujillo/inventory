@@ -43,7 +43,9 @@
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
+                    <br><br>
                     <div class="container mt-5">
+                        
                         <div class="row justify-content-center">
                             <div class="col-lg-4">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -66,7 +68,7 @@
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <!-- <div class="form-floating mb-3"> -->
                                                 <!-- <a class="small" href="password.html">Forgot Password?</a> -->
-                                                <button class="btn btn-success btn-lg btn-block" tabindex="15" style="font-size: medium; margin: auto" name="login"><b>Login</b></button>
+                                                <button class="btn btn-success btn-lg btn-block" tabindex="15" style="font-size: medium; margin: auto" name="login"><b>Log In</b></button>
                                             
                                             </div>
                                         </form>
