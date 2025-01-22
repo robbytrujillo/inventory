@@ -56,19 +56,20 @@
                     <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard"></i></div>
                                 Stok Peralatan
                             </a>
                             <a class="nav-link" href="masuk.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-left"></i></div>
                                 Peralatan Masuk
                             </a>
                             <a class="nav-link" href="keluar.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <hr />
                             <a class="nav-link" href="logout.php">
-                                <!-- <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div> -->
+                                <div class="sb-nav-link-icon"><i class="fas fa-ban"></i></div>
                                 Logout
                             </a>
                         </div>
@@ -83,9 +84,9 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Peralatan Masuk</h1>
-                        <ol class="breadcrumb mb-4">
+                        <!-- <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Peralatan Masuk</li>
-                        </ol>
+                        </ol> -->
                         <!-- <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">

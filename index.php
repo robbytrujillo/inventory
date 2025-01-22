@@ -65,15 +65,16 @@
                                 Stok Peralatan
                             </a>
                             <a class="nav-link" href="masuk.php">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-circle-down"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-left"></i></div>
                                 Peralatan Masuk
                             </a>
                             <a class="nav-link" href="keluar.php">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-circle-up"></i></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <hr />
                             <a class="nav-link" href="logout.php">
-                                <!-- <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div> -->
+                                <div class="sb-nav-link-icon"><i class="fas fa-ban"></i></div>
                                 Logout
                             </a>
                         </div>
