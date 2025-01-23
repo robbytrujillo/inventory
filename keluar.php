@@ -27,7 +27,8 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Inventory IHBS</a>
+            <!-- <a class="navbar-brand ps-3" href="index.php">Inventory IHBS</a> -->
+            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 2%; margin-top: 0%; margin-right: 5%" href="index.php">
             <!-- <img src="./assets/img/inventory-logo.png" style="width: 200px; margin-left: 25%; margin-top: 5%"> -->
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -59,7 +60,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                     <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard"></i></div>
                                 Stok Peralatan
