@@ -234,11 +234,11 @@
                         </select>
                         <!-- <input type="text" name="nama_peralatan" placeholder="Nama Peralatan" class="form-control" required> -->
                         <br>
-                        <input type="number" name="jumlah_masuk" placeholder="Jumlah Masuk" class="form-control" required>
+                        <input type="number" name="jumlah_keluar" placeholder="Jumlah Keluar" class="form-control" required>
                         <br>
                         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success" name="addnperalatankeluar"><b>Submit</b></button>
+                        <button type="submit" class="btn btn-success" name="addperalatankeluar"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>

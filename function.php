@@ -44,7 +44,7 @@ if(isset($_POST['peralatanmasuk'])) {
 }
 
 // menambah peralatan keluar
-if(isset($_POST['peralatanmasuk'])) {
+if(isset($_POST['addperalatankeluar'])) {
     $peralatannya = $_POST['peralatannya'];
     $penerima = $_POST['penerima'];
     $jumlah_keluar = $_POST['jumlah_keluar'];
@@ -53,17 +53,17 @@ if(isset($_POST['peralatanmasuk'])) {
     $ambildatanya = mysqli_fetch_array($cekstoksekarang);
     
     $stoksekarang = $ambildatanya['stok'];
-    $tambahkanstoksekarangdenganjumlah = $stoksekarang - $jumlah_keluar;
+    $kurangkanstoksekarangdenganjumlah = $stoksekarang - $jumlah_keluar;
 
 
-    $addtomasuk = mysqli_query($conn, "INSERT INTO peralatan_keluar (id_peralatan, keterangan, jumlah_masuk) VALUES ('$peralatannya', '$penerima', '$jumlah_masuk')");
-    $updatestokmasuk = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$tambahkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
+    $addtokeluar = mysqli_query($conn, "INSERT INTO peralatan_keluar (id_peralatan, penerima, jumlah_keluar) VALUES ('$peralatannya', '$penerima', '$jumlah_keluar')");
+    $updatestokkeluar = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
     
-    if ($addtomasuk && $updatestokmasuk) {
-        header('location: masuk.php');
+    if ($addtokeluar && $updatestokkeluar) {
+        header('location: keluar.php');
     } else {
         echo "gagal";
-        header('location: masuk.php');
+        header('location: keluar.php');
     }
 }
 
