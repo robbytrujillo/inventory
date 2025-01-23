@@ -165,22 +165,38 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Tanggal</th>
                                             <th>Nama Peralatan</th>
-                                            <th>Deskripsi</th>
-                                            <th>Stok</th>
+                                            <th>Jumlah Masuk</th>
+                                            <th>Keterangan</th>
                                             <!-- <th>Start date</th>
                                             <th>Salary</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php 
+                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_masuk m, stok_peralatan s WHERE s.id_peralatan = m.id_peralatan");
+
+                                        while($data=mysqli_fetch_array($ambilsemuadatastok)) {
+                                            $i = 0;
+                                            $tanggal = $data['tanggal'];
+                                            $nama_peralatan = $data['nama_peralatan'];
+                                            $jumlah_masuk = $data['jumlah_masuk'];
+                                            $keterangan = $data['keterangan'];
+                                        ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <!-- <td>2011/04/25</td>
-                                            <td>$320,800</td> -->
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $tanggal; ?></td>
+                                            <td><?= $nama_peralatan; ?></td>
+                                            <td><?= $jumlah_masuk; ?></td>
+                                            <td><?= $keterangan; ?></td>
+                                            
                                         </tr>
+                                        <?php 
+                                        };
+                                        ?>
+                                    
+                                    
                                         
                                     </tbody>
                                 </table>

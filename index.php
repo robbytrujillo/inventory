@@ -171,15 +171,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
+
+                                        while($data=mysqli_fetch_array($ambilsemuadatastok)) {
+                                            $i = 0;
+                                            $nama_peralatan = $data['nama_peralatan'];
+                                            $deskripsi = $data['deskripsi'];
+                                            $stok = $data['stok'];
+                                        ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
+                                            <td><?= $i+1; ?></td>
+                                            <td><?= $nama_peralatan; ?></td>
+                                            <td><?= $deskripsi; ?></td>
+                                            <td><?= $stok; ?></td>
                                             <!-- <td>2011/04/25</td>
                                             <td>$320,800</td> -->
                                         </tr>
-                                        
+                                        <?php 
+                                        };
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
