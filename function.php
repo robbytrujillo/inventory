@@ -10,12 +10,60 @@ if (isset($_POST['addnewperalatan'])) {
     $deskripsi      = $_POST['deskripsi'];
     $stok           = $_POST['stok'];
 
-    $addtotable = mysqli_query($conn, "insert into stok_peralatan (nama_peralatan, deskripsi, stok) values ('$nama_peralatan', '$deskripsi', '$stok')");
+    $addtotable = mysqli_query($conn, "INSERT INTO stok_peralatan (nama_peralatan, deskripsi, stok) VALUES ('$nama_peralatan', '$deskripsi', '$stok')");
     if ($addtotable) {
         header('location: index.php');
     } else {
         echo "gagal";
         header('location: index.php');
+    }
+}
+
+// menambah peralatan masuk
+if(isset($_POST['peralatanmasuk'])) {
+    $peralatannya = $_POST['peralatannya'];
+    $penerima = $_POST['penerima'];
+    $jumlah_masuk = $_POST['jumlah_masuk'];
+
+    $cekstoksekarang = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$peralatannya'");
+    $ambildatanya = mysqli_fetch_array($cekstoksekarang);
+    
+    $stoksekarang = $ambildatanya['stok'];
+    $tambahkanstoksekarangdenganjumlah = $stoksekarang + $jumlah_masuk;
+
+
+    $addtomasuk = mysqli_query($conn, "INSERT INTO peralatan_masuk (id_peralatan, keterangan, jumlah_masuk) VALUES ('$peralatannya', '$penerima', '$jumlah_masuk')");
+    $updatestokmasuk = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$tambahkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
+    
+    if ($addtomasuk && $updatestokmasuk) {
+        header('location: masuk.php');
+    } else {
+        echo "gagal";
+        header('location: masuk.php');
+    }
+}
+
+// menambah peralatan keluar
+if(isset($_POST['peralatanmasuk'])) {
+    $peralatannya = $_POST['peralatannya'];
+    $penerima = $_POST['penerima'];
+    $jumlah_keluar = $_POST['jumlah_keluar'];
+
+    $cekstoksekarang = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$peralatannya'");
+    $ambildatanya = mysqli_fetch_array($cekstoksekarang);
+    
+    $stoksekarang = $ambildatanya['stok'];
+    $tambahkanstoksekarangdenganjumlah = $stoksekarang - $jumlah_keluar;
+
+
+    $addtomasuk = mysqli_query($conn, "INSERT INTO peralatan_keluar (id_peralatan, keterangan, jumlah_masuk) VALUES ('$peralatannya', '$penerima', '$jumlah_masuk')");
+    $updatestokmasuk = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$tambahkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
+    
+    if ($addtomasuk && $updatestokmasuk) {
+        header('location: masuk.php');
+    } else {
+        echo "gagal";
+        header('location: masuk.php');
     }
 }
 
