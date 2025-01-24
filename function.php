@@ -106,9 +106,9 @@ if (isset($_POST['updateperalatanmasuk'])) {
     $stoknya = mysqli_fetch_array($lihatstok);
     $stoksekarang = $stoknya['stok'];
 
-    $jumlah_masuk_skrg = 
+    // $jumlah_masuk_skrg = 
 
-    if ($)
+    // if ($)
 }
 
 
