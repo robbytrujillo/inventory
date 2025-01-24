@@ -156,7 +156,7 @@
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
-                                    <b>Tambah Peralatan</b>
+                                    <b>Tambah Stok Peralatan</b>
                                 </button>
                             </div>
                             <div class="card-body">
@@ -167,6 +167,7 @@
                                             <th>Nama Peralatan</th>
                                             <th>Deskripsi</th>
                                             <th>Stok</th>
+                                            <th>Aksi</th>
                                             <!-- <th>Start date</th>
                                             <th>Salary</th> -->
                                         </tr>
@@ -174,21 +175,83 @@
                                     <tbody>
                                         <?php 
                                         $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
+                                        $i = 1;
 
-                                        while($data=mysqli_fetch_array($ambilsemuadatastok)) {
-                                            $i = 0;
+                                        while($data=mysqli_fetch_array($ambilsemuadatastok)) {                                          
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $deskripsi = $data['deskripsi'];
                                             $stok = $data['stok'];
+                                            $idp = $data['id_peralatan'];
                                         ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $deskripsi; ?></td>
                                             <td><?= $stok; ?></td>
-                                            <!-- <td>2011/04/25</td>
-                                            <td>$320,800</td> -->
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
+                                                    Edit
+                                                </button>
+                                                <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
+                                                    Delete
+                                                </button>
+                                            </td>
                                         </tr>
+
+                                        <!-- Edit Modal -->
+                                        <div class="modal fade" id="edit<?= $idp; ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                    <h4 class="modal-title">Ubah Peralatan</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    
+                                                    <!-- Modal body -->
+                                                    <form method="post">
+                                                        <div class="modal-body">
+                                                            <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
+                                                            <br>
+                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
+                                                            <br>
+                                                            <!-- <input type="number" name="stok" placeholder="Stok" class="form-control" required>
+                                                            <br> -->
+                                                            <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
+                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="delete<?= $idp; ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                    <h4 class="modal-title">Hapus Peralatan?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    
+                                                    <!-- Modal body -->
+                                                    <form method="post">
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
+                                                            <br>
+                                                            <br>
+                                                            <button type="submit" class="btn btn-danger" name="hapusperalatan"><b>Hapus</b></button>
+                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <?php 
                                         };
                                         ?>

@@ -153,7 +153,7 @@
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
-                                    <b>Tambah Peralatan</b>
+                                    <b>Tambah Peralatan Keluar</b>
                                 </button>
                             </div>
                             <div class="card-body">
@@ -172,9 +172,9 @@
                                     <tbody>
                                     <?php 
                                         $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan");
+                                        $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
-                                            $i = 0;
                                             $tanggal = $data['tanggal_keluar'];
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_keluar = $data['jumlah_keluar'];

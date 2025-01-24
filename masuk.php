@@ -176,9 +176,9 @@
                                     <tbody>
                                     <?php 
                                         $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_masuk m, stok_peralatan s WHERE s.id_peralatan = m.id_peralatan");
+                                        $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
-                                            $i = 0;
                                             $tanggal = $data['tanggal'];
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_masuk = $data['jumlah_masuk'];
