@@ -192,7 +192,7 @@
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
                                                     Edit
                                                 </button>
-                                                <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>">
+                                                <!-- <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>"> -->
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
                                                     Delete
                                                 </button>
@@ -217,8 +217,7 @@
                                                             <br>
                                                             <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
                                                             <br>
-                                                            <!-- <input type="number" name="stok" placeholder="Stok" class="form-control" required>
-                                                            <br> -->
+                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                             <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
                                                             <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                         </div>
@@ -242,6 +241,7 @@
                                                     <form method="post">
                                                         <div class="modal-body">
                                                             Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
+                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                             <br>
                                                             <br>
                                                             <button type="submit" class="btn btn-danger" name="hapusperalatan"><b>Hapus</b></button>

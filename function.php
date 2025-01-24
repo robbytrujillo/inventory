@@ -67,5 +67,33 @@ if(isset($_POST['addperalatankeluar'])) {
     }
 }
 
+// update stok peralatan
+if (isset($_POST['updateperalatan'])) {
+    $idp = $_POST['idp'];
+    $nama_peralatan = $_POST['nama_peralatan'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi' WHERE id_peralatan='$idp'");
+    if ($update) {
+        header('location: index.php');
+    } else {
+        echo "gagal";
+        header('location: index.php');
+    }
+}
+
+// hapus stok peralatan
+if (isset($_POST['hapusperalatan'])) {
+    $idp = $_POST['idp'];
+
+    $hapus = mysqli_query($conn, "DELETE FROM stok_peralatan WHERE id_peralatan='$idp'");
+    if ($hapus) {
+        header('location: index.php');
+    } else {
+        echo "gagal";
+        header('location: index.php');
+    }
+}
+
 
 ?>
