@@ -95,5 +95,21 @@ if (isset($_POST['hapusperalatan'])) {
     }
 }
 
+// Mengubah data peralatan masuk
+if (isset($_POST['updateperalatanmasuk'])) {
+    $idp = $_POST['idp'];
+    $nama_peralatan = $_POST['nama_peralatan'];
+    $keterangan = $_POST['keterangan'];
+    $jumlah_masuk = $_POST['jumlah_masuk'];
+
+    $lihatstok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$idp;'");
+    $stoknya = mysqli_fetch_array($lihatstok);
+    $stoksekarang = $stoknya['stok'];
+
+    $jumlah_masuk_skrg = 
+
+    if ($)
+}
+
 
 ?>
