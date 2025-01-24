@@ -19,6 +19,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
+        <!-- modal -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -181,7 +182,7 @@
                                             $stok = $data['stok'];
                                         ?>
                                         <tr>
-                                            <td><?= $i+1; ?></td>
+                                            <td><?= $i++; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $deskripsi; ?></td>
                                             <td><?= $stok; ?></td>
