@@ -115,7 +115,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
         $selisih = $jumlah_masuk - $jumlah_masukskrg;
         $kuriangin = $stoksekarang - $selisih;
         $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
-        $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE idm='$idm'");
+        $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
         if ($kurangistoknya && $updatenya) {
             header('location: masuk.php');
         } else {
@@ -127,7 +127,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
             $selisih = $jumlah_masukskrg - $jumlah_masuk;
             $kuriangin = $stoksekarang + $selisih;
             $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
-            $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE idm='$idm'");
+            $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
             if ($kurangistoknya && $updatenya) {
                 header('location: masuk.php');
             } else {
@@ -136,7 +136,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
             }
     }
 
-    // if ($)
+}
 }
 
 
