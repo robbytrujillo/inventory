@@ -216,8 +216,8 @@
                                                     <!-- Modal body -->
                                                     <form method="post">
                                                         <div class="modal-body">
-                                                            <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
-                                                            <br>
+                                                            <!-- <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
+                                                            <br> -->
                                                             <input type="number" name="jumlah_masuk" value="<?= $jumlah_masuk; ?>" class="form-control" required>
                                                             <br>
                                                             <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control" required>

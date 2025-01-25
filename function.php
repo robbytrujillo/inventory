@@ -98,7 +98,8 @@ if (isset($_POST['hapusperalatan'])) {
 // Mengubah data peralatan masuk
 if (isset($_POST['updateperalatanmasuk'])) {
     $idp = $_POST['idp'];
-    $nama_peralatan = $_POST['nama_peralatan'];
+    $idm = $_POST['idm'];
+    // $nama_peralatan = $_POST['nama_peralatan'];
     $keterangan = $_POST['keterangan'];
     $jumlah_masuk = $_POST['jumlah_masuk'];
 
@@ -106,7 +107,34 @@ if (isset($_POST['updateperalatanmasuk'])) {
     $stoknya = mysqli_fetch_array($lihatstok);
     $stoksekarang = $stoknya['stok'];
 
-    // $jumlah_masuk_skrg = 
+    $jumlah_masukskrg = mysqli_query($conn, "SELECT * FROM peralatan_masuk where id_masuk='$idm'");
+    $jumlah_masuknya = mysqli_fetch_array($jumlah_masukskrg);
+    $jumlah_masukskrg = $jumlah_masuknya['jumlah_masuk'];
+
+    if ($jumlah_masuk > $jumlah_masukskrg) {
+        $selisih = $jumlah_masuk - $jumlah_masukskrg;
+        $kuriangin = $stoksekarang - $selisih;
+        $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
+        $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE idm='$idm'");
+        if ($kurangistoknya && $updatenya) {
+            header('location: masuk.php');
+        } else {
+            echo "gagal";
+            header('location: masuk.php');
+        }
+    } else {
+        if ($jumlah_masuk < $jumlah_masukskrg) {
+            $selisih = $jumlah_masukskrg - $jumlah_masuk;
+            $kuriangin = $stoksekarang + $selisih;
+            $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
+            $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE idm='$idm'");
+            if ($kurangistoknya && $updatenya) {
+                header('location: masuk.php');
+            } else {
+                echo "gagal";
+                header('location: masuk.php');
+            }
+    }
 
     // if ($)
 }
