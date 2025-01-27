@@ -113,8 +113,8 @@ if (isset($_POST['updateperalatanmasuk'])) {
 
     if ($jumlah_masuk > $jumlah_masukskrg) {
         $selisih = $jumlah_masuk - $jumlah_masukskrg;
-        $kuriangin = $stoksekarang - $selisih;
-        $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
+        $kurangin = $stoksekarang - $selisih;
+        $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
         $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
         if ($kurangistoknya && $updatenya) {
             header('location: masuk.php');
@@ -123,10 +123,10 @@ if (isset($_POST['updateperalatanmasuk'])) {
             header('location: masuk.php');
         }
     } else {
-        if ($jumlah_masuk < $jumlah_masukskrg) {
+        // if ($jumlah_masuk < $jumlah_masukskrg) {
             $selisih = $jumlah_masukskrg - $jumlah_masuk;
-            $kuriangin = $stoksekarang + $selisih;
-            $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kuriangin' WHERE id_peralatan='$idb'");
+            $kurangin = $stoksekarang + $selisih;
+            $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
             $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
             if ($kurangistoknya && $updatenya) {
                 header('location: masuk.php');
@@ -137,7 +137,29 @@ if (isset($_POST['updateperalatanmasuk'])) {
     }
 
 }
+
+// Menghapus barang masuk
+if (isset($_POST['hapusperalatanmasuk'])) {
+    $idp = $_POST['idp'];
+    $jumlah_masuk = $_POST['jumlah_masuk'];
+    $idm = $_POST['idm'];
+
+    $getdatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$idp'");
+    $data = mysqli_fetch_array($getdatastok);
+    $stok = $data['stok'];
+
+    $selisih = $stok - $jumlah_masuk;
+
+    $update = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$selisih' WHERE id_peralatan='$idp'");
+    $hapusdata = mysqli_query($conn, "DELETE FROM peralatan_masuk WHERE id_masuk='$idm'");
+
+    if ($update && $hapusdata) {
+        header('location: masuk.php');
+    } else {
+        header('location: masuk.php');
+    }
 }
+
 
 
 ?>

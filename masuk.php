@@ -249,6 +249,7 @@
                                                             Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                             <input type="hidden" name="jumlah_masuk" value="<?= $jumlah_masuk; ?>">
+                                                            <input type="hidden" name="idm" value="<?= $idm; ?>">
                                                             <br>
                                                             <br>
                                                             <button type="submit" class="btn btn-danger" name="hapusperalatanmasuk"><b>Hapus</b></button>
