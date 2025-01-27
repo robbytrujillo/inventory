@@ -123,7 +123,6 @@ if (isset($_POST['updateperalatanmasuk'])) {
             header('location: masuk.php');
         }
     } else {
-        // if ($jumlah_masuk < $jumlah_masukskrg) {
             $selisih = $jumlah_masukskrg - $jumlah_masuk;
             $kurangin = $stoksekarang + $selisih;
             $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
@@ -138,7 +137,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
 
 }
 
-// Menghapus barang masuk
+// Menghapus peralatan masuk
 if (isset($_POST['hapusperalatanmasuk'])) {
     $idp = $_POST['idp'];
     $jumlah_masuk = $_POST['jumlah_masuk'];
