@@ -213,7 +213,11 @@
                                                     <!-- Modal body -->
                                                     <form method="post">
                                                         <div class="modal-body">
+                                                            <label for="nama_peralatan"><b>Nama Peralatan</b></label>
+                                                            <br>
                                                             <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
+                                                            <br>
+                                                            <label for="deskripsi"><b>Deskripsi</b></label>
                                                             <br>
                                                             <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
                                                             <br>

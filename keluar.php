@@ -165,6 +165,7 @@
                                             <th>Nama Peralatan</th>
                                             <th>Jumlah Keluar</th>
                                             <th>Penerima</th>
+                                            <th>Aksi</th>
                                             <!-- <th>Start date</th>
                                             <th>Salary</th> -->
                                         </tr>
@@ -175,6 +176,8 @@
                                         $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
+                                            $idk = $data['id_keluar'];
+                                            $idp = $data['id_peralatan'];
                                             $tanggal = $data['tanggal_keluar'];
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_keluar = $data['jumlah_keluar'];
@@ -186,8 +189,78 @@
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $jumlah_keluar; ?></td>
                                             <td><?= $penerima; ?></td>
-                                            
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idk; ?>">
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idk; ?>">
+                                                    Delete
+                                                </button>
+                                            </td>
                                         </tr>
+
+                                        <!-- Edit Modal -->
+                                        <div class="modal fade" id="edit<?= $idk; ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                    <h4 class="modal-title">Ubah Peralatan</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    
+                                                    <!-- Modal body -->
+                                                    <form method="post">
+                                                        <div class="modal-body">
+                                                            <!-- <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
+                                                            <br> -->
+                                                            <label><b>Jumlah Keluar</b></label>
+                                                            <br>
+                                                            <input type="number" name="jumlah_keluar" value="<?= $jumlah_keluar; ?>" class="form-control" required>
+                                                            <br>
+                                                            <label><b>Penerima</b></label>
+                                                            <br>
+                                                            <input type="text" name="penerima" value="<?= $penerima; ?>" class="form-control" required>
+                                                            <br>
+                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
+                                                            <input type="hidden" name="idm" value="<?= $idm; ?>">
+                                                            <button type="submit" class="btn btn-warning" name="updateperalatankeluar"><b>Update</b></button>
+                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="delete<?= $idk; ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                    <h4 class="modal-title">Hapus Peralatan?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    
+                                                    <!-- Modal body -->
+                                                    <form method="post">
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
+                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
+                                                            <input type="hidden" name="jumlah_keluar" value="<?= $jumlah_keluar; ?>">
+                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                            <br>
+                                                            <br>
+                                                            <button type="submit" class="btn btn-danger" name="hapusperalatankeluar"><b>Hapus</b></button>
+                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <?php 
                                         };
                                         ?>

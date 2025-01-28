@@ -113,7 +113,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
 
     if ($jumlah_masuk > $jumlah_masukskrg) {
         $selisih = $jumlah_masuk - $jumlah_masukskrg;
-        $kurangin = $stoksekarang - $selisih;
+        $kurangin = $stoksekarang + $selisih;
         $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
         $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
         if ($kurangistoknya && $updatenya) {
@@ -124,7 +124,7 @@ if (isset($_POST['updateperalatanmasuk'])) {
         }
     } else {
             $selisih = $jumlah_masukskrg - $jumlah_masuk;
-            $kurangin = $stoksekarang + $selisih;
+            $kurangin = $stoksekarang - $selisih;
             $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
             $updatenya = mysqli_query($conn, "UPDATE peralatan_masuk SET jumlah_masuk='$jumlah_masuk', keterangan='$keterangan' WHERE id_masuk='$idm'");
             if ($kurangistoknya && $updatenya) {
@@ -156,6 +156,70 @@ if (isset($_POST['hapusperalatanmasuk'])) {
         header('location: masuk.php');
     } else {
         header('location: masuk.php');
+    }
+}
+
+// Mengubah data peralatan keluar
+if (isset($_POST['updateperalatankeluar'])) {
+    $idp = $_POST['idp'];
+    $idk = $_POST['idk'];
+    // $nama_peralatan = $_POST['nama_peralatan'];
+    $penerima = $_POST['penerima'];
+    $jumlah_keluar = $_POST['jumlah_keluar'];
+
+    $lihatstok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$idp;'");
+    $stoknya = mysqli_fetch_array($lihatstok);
+    $stoksekarang = $stoknya['stok'];
+
+    $jumlah_keluarskrg = mysqli_query($conn, "SELECT * FROM peralatan_keluar where id_keluar='$idk'");
+    $jumlah_keluarnya = mysqli_fetch_array($jumlah_keluarskrg);
+    $jumlah_keluarskrg = $jumlah_keluarnya['jumlah_keluar'];
+
+    if ($jumlah_keluar > $jumlah_keluarskrg) {
+        $selisih = $jumlah_keluar - $jumlah_keluarskrg;
+        $kurangin = $stoksekarang - $selisih;
+        $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
+        $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', penerima='$penerima' WHERE id_keluar='$idk'");
+        if ($kurangistoknya && $updatenya) {
+            header('location: keluar.php');
+        } else {
+            echo "gagal";
+            header('location: keluar.php');
+        }
+    } else {
+            $selisih = $jumlah_keluarskrg - $jumlah_keluar;
+            $kurangin = $stoksekarang + $selisih;
+            $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
+            $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', keterangan='$keterangan' WHERE id_masuk='$idm'");
+            if ($kurangistoknya && $updatenya) {
+                header('location: keluar.php');
+            } else {
+                echo "gagal";
+                header('location: keluar.php');
+            }
+    }
+
+}
+
+// Menghapus peralatan keluar
+if (isset($_POST['hapusperalatankeluar'])) {
+    $idp = $_POST['idp'];
+    $jumlah_keluar = $_POST['jumlah_keluar'];
+    $idk = $_POST['idk'];
+
+    $getdatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$idp'");
+    $data = mysqli_fetch_array($getdatastok);
+    $stok = $data['stok'];
+
+    $selisih = $stok - $jumlah_keluar;
+
+    $update = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$selisih' WHERE id_peralatan='$idp'");
+    $hapusdata = mysqli_query($conn, "DELETE FROM peralatan_keluar WHERE id_keluar='$idk'");
+
+    if ($update && $hapusdata) {
+        header('location: keluar.php');
+    } else {
+        header('location: keluar.php');
     }
 }
 

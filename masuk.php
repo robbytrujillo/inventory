@@ -192,18 +192,18 @@
                                             <td><?= $jumlah_masuk; ?></td>
                                             <td><?= $keterangan; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idm; ?>">
                                                     Edit
                                                 </button>
                                                 <!-- <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>"> -->
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idm; ?>">
                                                     Delete
                                                 </button>
                                             </td>
                                         </tr>
 
                                         <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?= $idp; ?>">
+                                        <div class="modal fade" id="edit<?= $idm; ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
@@ -218,7 +218,11 @@
                                                         <div class="modal-body">
                                                             <!-- <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
                                                             <br> -->
+                                                            <label><b>Jumlah Masuk</b></label>
+                                                            <br>
                                                             <input type="number" name="jumlah_masuk" value="<?= $jumlah_masuk; ?>" class="form-control" required>
+                                                            <br>
+                                                            <label><b>Keterangan</b></label>
                                                             <br>
                                                             <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control" required>
                                                             <br>
@@ -233,7 +237,7 @@
                                         </div>
                                         
                                         <!-- Delete Modal -->
-                                        <div class="modal fade" id="delete<?= $idp; ?>">
+                                        <div class="modal fade" id="delete<?= $idm; ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
