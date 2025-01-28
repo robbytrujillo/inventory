@@ -99,7 +99,6 @@ if (isset($_POST['hapusperalatan'])) {
 if (isset($_POST['updateperalatanmasuk'])) {
     $idp = $_POST['idp'];
     $idm = $_POST['idm'];
-    // $nama_peralatan = $_POST['nama_peralatan'];
     $keterangan = $_POST['keterangan'];
     $jumlah_masuk = $_POST['jumlah_masuk'];
 
@@ -163,7 +162,6 @@ if (isset($_POST['hapusperalatanmasuk'])) {
 if (isset($_POST['updateperalatankeluar'])) {
     $idp = $_POST['idp'];
     $idk = $_POST['idk'];
-    // $nama_peralatan = $_POST['nama_peralatan'];
     $penerima = $_POST['penerima'];
     $jumlah_keluar = $_POST['jumlah_keluar'];
 
@@ -190,7 +188,7 @@ if (isset($_POST['updateperalatankeluar'])) {
             $selisih = $jumlah_keluarskrg - $jumlah_keluar;
             $kurangin = $stoksekarang + $selisih;
             $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
-            $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', keterangan='$keterangan' WHERE id_masuk='$idm'");
+            $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', penerima='$penerima' WHERE id_keluar='$idk'");
             if ($kurangistoknya && $updatenya) {
                 header('location: keluar.php');
             } else {
@@ -211,7 +209,7 @@ if (isset($_POST['hapusperalatankeluar'])) {
     $data = mysqli_fetch_array($getdatastok);
     $stok = $data['stok'];
 
-    $selisih = $stok - $jumlah_keluar;
+    $selisih = $stok + $jumlah_keluar;
 
     $update = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$selisih' WHERE id_peralatan='$idp'");
     $hapusdata = mysqli_query($conn, "DELETE FROM peralatan_keluar WHERE id_keluar='$idk'");

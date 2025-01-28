@@ -224,7 +224,7 @@
                                                             <input type="text" name="penerima" value="<?= $penerima; ?>" class="form-control" required>
                                                             <br>
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <input type="hidden" name="idm" value="<?= $idm; ?>">
+                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
                                                             <button type="submit" class="btn btn-warning" name="updateperalatankeluar"><b>Update</b></button>
                                                             <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                         </div>
@@ -275,7 +275,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; IT Development Inventory IHBS 2025</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

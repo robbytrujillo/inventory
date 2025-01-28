@@ -33,27 +33,6 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             
-            <!-- Navbar Search-->
-            <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form> -->
-            
-            <!-- Navbar-->
-            <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a> 
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul> -->
-
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -80,195 +59,141 @@
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div> -->
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Stok Peralatan</h1>
-                        <!-- <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Stok Peralatan</li>
-                        </ol> -->
-                        <!-- <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <h1 class="mt-4">Stok Peralatan</h1>                     
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                        <!-- Button to Open the Modal -->
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                            <b>Tambah Stok Peralatan</b>
+                                        </button>
+                                        <a href="export-stok-peralatan.php" class="btn btn-info"><b>Export Data</b></a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <!-- Button to Open the Modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                                    <!-- <i class="far fa-plus-square"></i>  -->
-                                    <b>Tambah Stok Peralatan</b>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Peralatan</th>
-                                            <th>Deskripsi</th>
-                                            <th>Stok</th>
-                                            <th>Aksi</th>
-                                            <!-- <th>Start date</th>
-                                            <th>Salary</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                    <div class="card-body">
                                         <?php 
-                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
-                                        $i = 1;
+                                            $ambildatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE stok < 1");
 
-                                        while($data=mysqli_fetch_array($ambilsemuadatastok)) {                                          
-                                            $nama_peralatan = $data['nama_peralatan'];
-                                            $deskripsi = $data['deskripsi'];
-                                            $stok = $data['stok'];
-                                            $idp = $data['id_peralatan'];
-                                        ?>
-                                        <tr>
-                                            <td><?= $i++; ?></td>
-                                            <td><?= $nama_peralatan; ?></td>
-                                            <td><?= $deskripsi; ?></td>
-                                            <td><?= $stok; ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
-                                                    Edit
-                                                </button>
-                                                <!-- <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>"> -->
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
+                                            while ($fetch = mysqli_fetch_array($ambildatastok)) {
+                                                $peralatan = $fetch['nama_peralatan'];                                           
+                                        ?>    
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <strong>Perhatian!</strong> Stok Peralatan <b><?= $peralatan ?></b> telah habis.
+                                            </div>
+                                        <?php 
+                                             }
+                                        ?>    
 
-                                        <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?= $idp; ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                    <h4 class="modal-title">Ubah Peralatan</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
+                                    <table id="datatablesSimple">                                       
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Peralatan</th>
+                                                <th>Deskripsi</th>
+                                                <th>Stok</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
+                                            $i = 1;
+
+                                            while($data=mysqli_fetch_array($ambilsemuadatastok)) {                                          
+                                                $nama_peralatan = $data['nama_peralatan'];
+                                                $deskripsi = $data['deskripsi'];
+                                                $stok = $data['stok'];
+                                                $idp = $data['id_peralatan'];
+                                            ?>
+                                            <tr>
+                                                <td><?= $i++; ?></td>
+                                                <td><?= $nama_peralatan; ?></td>
+                                                <td><?= $deskripsi; ?></td>
+                                                <td><?= $stok; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
+                                                        Edit
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Edit Modal -->
+                                            <div class="modal fade" id="edit<?= $idp; ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
                                                     
-                                                    <!-- Modal body -->
-                                                    <form method="post">
-                                                        <div class="modal-body">
-                                                            <label for="nama_peralatan"><b>Nama Peralatan</b></label>
-                                                            <br>
-                                                            <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
-                                                            <br>
-                                                            <label for="deskripsi"><b>Deskripsi</b></label>
-                                                            <br>
-                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
-                                                            <br>
-                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
-                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                        <h4 class="modal-title">Ubah Peralatan</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
-                                                    </form>
+                                                        
+                                                        <!-- Modal body -->
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                <label for="nama_peralatan"><b>Nama Peralatan</b></label>
+                                                                <br>
+                                                                <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
+                                                                <br>
+                                                                <label for="deskripsi"><b>Deskripsi</b></label>
+                                                                <br>
+                                                                <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
+                                                                <br>
+                                                                <input type="hidden" name="idp" value="<?= $idp; ?>">
+                                                                <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
+                                                                <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <!-- Delete Modal -->
-                                        <div class="modal fade" id="delete<?= $idp; ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Peralatan?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
+                                            
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="delete<?= $idp; ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
                                                     
-                                                    <!-- Modal body -->
-                                                    <form method="post">
-                                                        <div class="modal-body">
-                                                            Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
-                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <br>
-                                                            <br>
-                                                            <button type="submit" class="btn btn-danger" name="hapusperalatan"><b>Hapus</b></button>
-                                                            <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                        <h4 class="modal-title">Hapus Peralatan?</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
-                                                    </form>
+                                                        
+                                                        <!-- Modal body -->
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
+                                                                <input type="hidden" name="idp" value="<?= $idp; ?>">
+                                                                <br>
+                                                                <br>
+                                                                <button type="submit" class="btn btn-danger" name="hapusperalatan"><b>Hapus</b></button>
+                                                                <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <?php 
-                                        };
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            
+                                            <?php 
+                                            };
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; IT Development Inventory IHBS 2025</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -310,16 +235,9 @@
                         <button type="submit" class="btn btn-success" name="addnewperalatan"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
-                </form>
-
-                <!-- Modal footer -->
-                <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div> -->
-                
+                </form>               
             </div>
             </div>
-        </div>
-    
+        </div>    
     </body>
 </html>
