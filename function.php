@@ -53,17 +53,27 @@ if(isset($_POST['addperalatankeluar'])) {
     $ambildatanya = mysqli_fetch_array($cekstoksekarang);
     
     $stoksekarang = $ambildatanya['stok'];
-    $kurangkanstoksekarangdenganjumlah = $stoksekarang - $jumlah_keluar;
+    if ($stoksekarang >= $jumlah_keluar) {
+        // jika stok cukup
+        $kurangkanstoksekarangdenganjumlah = $stoksekarang - $jumlah_keluar;
 
-
-    $addtokeluar = mysqli_query($conn, "INSERT INTO peralatan_keluar (id_peralatan, penerima, jumlah_keluar) VALUES ('$peralatannya', '$penerima', '$jumlah_keluar')");
-    $updatestokkeluar = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
-    
-    if ($addtokeluar && $updatestokkeluar) {
-        header('location: keluar.php');
+        $addtokeluar = mysqli_query($conn, "INSERT INTO peralatan_keluar (id_peralatan, penerima, jumlah_keluar) VALUES ('$peralatannya', '$penerima', '$jumlah_keluar')");
+        $updatestokkeluar = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangkanstoksekarangdenganjumlah' WHERE id_peralatan='$peralatannya'");
+        
+        if ($addtokeluar && $updatestokkeluar) {
+            header('location: keluar.php');
+        } else {
+            echo "gagal";
+            header('location: keluar.php');
+        }
     } else {
-        echo "gagal";
-        header('location: keluar.php');
+        // jika stok tidak cukup
+        echo '
+        <script>
+            alert("Stok saat ini tidak mencukupi");
+            window.location.href="keluar.php";
+        </script>
+        ';
     }
 }
 
