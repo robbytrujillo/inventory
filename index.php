@@ -116,11 +116,11 @@
                                                 <td><?= $stok; ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
-                                                        Edit
+                                                        <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
-                                                        Delete
-                                                    </button>
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>   
                                                 </td>
                                             </tr>
 

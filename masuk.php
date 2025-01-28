@@ -193,11 +193,11 @@
                                             <td><?= $keterangan; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idm; ?>">
-                                                    Edit
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
                                                 <!-- <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>"> -->
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idm; ?>">
-                                                    Delete
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
