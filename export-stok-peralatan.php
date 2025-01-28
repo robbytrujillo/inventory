@@ -5,7 +5,7 @@
 
 <html>
 <head>
-  <title>Stock Peralatan</title>
+  <title>Export Stok Peralatan</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -18,8 +18,8 @@
 
 <body>
 <div class="container">
-			<h2>Stock Peralatan</h2>
-			<h4>(Inventory)</h4>
+            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 0%; margin-top: 0%; margin-right: 5%" href="index.php">
+			<h4>Stock Peralatan</h4>
             <br>
             <a href="index.php" class="btn btn-success">Kembali</a>
             <br>
