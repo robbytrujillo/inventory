@@ -19,7 +19,7 @@
 <body>
 <div class="container">
             <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 0%; margin-top: 0%; margin-right: 5%" href="index.php">
-			<h4>Stock Peralatan</h4>
+			<h4>Stok Peralatan</h4>
             <br>
             <a href="index.php" class="btn btn-success">Kembali</a>
             <br>

@@ -73,6 +73,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <a class="nav-link" href="user.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                User
+                            </a>
                             <hr />
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-ban"></i></div>
