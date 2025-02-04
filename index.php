@@ -197,7 +197,9 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; IT Development Inventory IHBS 2025</div>
+                            <div class="col-md-6 text-center text-md-left">
+                                <p class="mb-0">Copyright &copy; <?php echo date('Y'); ?> IT Development IHBS </p>
+                            </div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -236,7 +238,7 @@
                         <br>
                         <input type="number" name="stok" placeholder="Stok" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success" name="addnewperalatan"><b>Submit</b></button>
+                        <button type="submit" class="btn btn-success" name="addnewperlatan"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>               

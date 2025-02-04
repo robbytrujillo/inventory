@@ -231,6 +231,54 @@ if (isset($_POST['hapusperalatankeluar'])) {
     }
 }
 
+// Menambah user baru
+if (isset($_POST['addnewuser'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+    $queryinsert = mysqli_query($conn, "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')");
+    
+    if ($queryinsert) {
+        // if berhasil
+        header('location: user.php');
+    } else {
+        // if gagal
+        header('location: user.php');
+    }
+}
+
+// Update Data User
+if (isset($_POST['updateuser'])) {
+    $usernamebaru = $_POST['usernamebaru'];
+    $emailbaru = $_POST['emailbaru'];
+    $passwordbaru = $_POST['passwordbaru'];
+    $idu = $_POST['idu'];
+
+    $queryupdate = mysqli_query($conn, "UPDATE user SET username= '$usernamebaru', email= '$emailbaru', password= '$passwordbaru' WHERE iduser='$idu'");
+
+    if ($queryupdate) {
+        // if update berhasil
+        header('location: user.php');
+    } else {
+        // if update gagal
+        header('location: user.php' );
+    }
+}
+
+// Menghapus data user
+if (isset($_POST['hapususer'])) {
+    $idu = $_POST['idu'];
+
+    $querydelete = mysqli_query($conn, "DELETE FROM user WHERE iduser='$idu'");
+
+    if ($queryudelete) {
+        // if update berhasil
+        header('location: user.php');
+    } else {
+        // if update gagal
+        header('location: user.php' );
+    }
+}
 
 ?>

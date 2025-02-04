@@ -131,15 +131,15 @@
                                                                 <div class="modal-body">
                                                                     <label for="username"><b>Username</b></label>
                                                                     <br>
-                                                                    <input type="text" name="username" value="<?= $username; ?>" class="form-control" required>
+                                                                    <input type="text" name="usernamebaru" value="<?= $username; ?>" class="form-control" placeholder="Username" required>
                                                                     <br>
                                                                     <label for="email"><b>Email</b></label>
                                                                     <br>
-                                                                    <input type="text" name="email" value="<?= $email; ?>" class="form-control" required>
+                                                                    <input type="text" name="emailbaru" value="<?= $email; ?>" placeholder="Email" class="form-control" required>
                                                                     <br>
                                                                     <label for="password"><b>Password</b></label>
                                                                     <br>
-                                                                    <input type="text" name="password" value="<?= $password; ?>" class="form-control" required>
+                                                                    <input type="text" name="passwordbaru" placeholder="Password" class="form-control" required>
                                                                     <br>
                                                                     <input type="hidden" name="idu" value="<?= $idu; ?>">
                                                                     <button type="submit" class="btn btn-warning" name="updateuser"><b>Update</b></button>
@@ -225,7 +225,7 @@
                         <br>
                         <input type="text" name="email" placeholder="Email" class="form-control" required>
                         <br>
-                        <input type="number" name="password" placeholder="Password" class="form-control" required>
+                        <input type="password" name="password" placeholder="Password" class="form-control" required>
                         <br>
                         <button type="submit" class="btn btn-success" name="addnewuser"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
