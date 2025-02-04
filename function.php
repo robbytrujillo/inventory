@@ -10,12 +10,63 @@ if (isset($_POST['addnewperalatan'])) {
     $deskripsi      = $_POST['deskripsi'];
     $stok           = $_POST['stok'];
 
-    $addtotable = mysqli_query($conn, "INSERT INTO stok_peralatan (nama_peralatan, deskripsi, stok) VALUES ('$nama_peralatan', '$deskripsi', '$stok')");
-    if ($addtotable) {
-        header('location: index.php');
+    // soal gambar
+    $allowed_extension = array('png','jpg'); 
+    $nama = $_FILES['file']['name']; // mengambil nama gambar
+    $dot = explode('.',$nama); 
+    $ekstensi = strtolower(end($dot)); // mengambil ektensinya
+    $ukuran = $_FILES['file']['size']; // mengambil size filenya
+    $file_tmp = $_FILES['file']['tmp_name']; // mengambil lokasi filenya
+
+    // penamaan file -> enkripsi
+    $image = md5(uniqid($nama, true) . time()).'.'.$ekstensi; // menggabungkan nama file yang dienkripsi dengan ekstensinya
+
+    $cek = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE nama_peralatan= '$nama_peralatan'");
+    $hitung = mysqli_num_rows($cek);
+
+    if ($hitung < 1) {
+        // jika belum ada
+
+        // proses upload gambar
+        if (in_array($ekstensi, $allowed_extension) === true) {
+            // validasi ukuran filenya
+            if ($ukuran < 15000000) {
+                move_uploaded_file($file_tmp, 'images/'.$image);
+
+                $addtotable = mysqli_query($conn, "INSERT INTO stok_peralatan (nama_peralatan, deskripsi, stok, gambar) VALUES ('$nama_peralatan', '$deskripsi', '$stok', '$image')");
+                if ($addtotable) {
+                    header('location: index.php');
+                } else {
+                    echo "Gagal";
+                    header('location: index.php');
+                }
+            } else {
+                //  kalau filenya lebih dari 15mb
+                echo '
+                    <script>
+                        alert("Ukuran terlalu besar");
+                        window.location.href="index.php";
+                    </script>
+            ';
+            }
+        } else {
+            // kalau filenya tidak png / jpg
+            echo '
+                <script>
+                    alert("File harus png/jpg");
+                    window.location.href="index.php";
+                </script>
+            ';
+        }
+
     } else {
-        echo "gagal";
-        header('location: index.php');
+        // jika sudah ada
+        echo '
+            <script>
+                alert("Nama perlatan sudah terdaftar");
+                window.location.href="index.php";
+            </script>
+        ';
     }
 }
 

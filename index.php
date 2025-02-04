@@ -24,6 +24,7 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="css/style-image.css" />
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -96,6 +97,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>Gambar</th>
                                                 <th>Nama Peralatan</th>
                                                 <th>Deskripsi</th>
                                                 <th>Stok</th>
@@ -107,14 +109,26 @@
                                             $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
                                             $i = 1;
 
-                                            while($data=mysqli_fetch_array($ambilsemuadatastok)) {                                          
+                                            while($data=mysqli_fetch_array($ambilsemuadatastok)) {
+                                                $gambar = $data['gambar'];                                          
                                                 $nama_peralatan = $data['nama_peralatan'];
                                                 $deskripsi = $data['deskripsi'];
                                                 $stok = $data['stok'];
                                                 $idp = $data['id_peralatan'];
+
+                                                // cek ada gambar atau tidak
+                                                $gambar = $data['gambar']; // ambil gambar
+                                                if ($gambar == null) {
+                                                    // jika tidak ada gambar
+                                                    $img = 'No Photo';
+                                                } else {
+                                                    // jika ada gambar
+                                                    $img = '<img src="images/'.$gambar.'" class="zoomable">';
+                                                }
                                             ?>
                                             <tr>
                                                 <td><?= $i++; ?></td>
+                                                <td><?= $img; ?></td>
                                                 <td><?= $nama_peralatan; ?></td>
                                                 <td><?= $deskripsi; ?></td>
                                                 <td><?= $stok; ?></td>
@@ -149,6 +163,8 @@
                                                                 <label for="deskripsi"><b>Deskripsi</b></label>
                                                                 <br>
                                                                 <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
+                                                                <br>
+                                                                <input type="file" name="gambar" value="<?= $gambar; ?>" class="form-control" required>
                                                                 <br>
                                                                 <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                                 <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
@@ -230,7 +246,7 @@
                 </div>
                 
                 <!-- Modal body -->
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="text" name="nama_peralatan" placeholder="Nama Peralatan" class="form-control" required>
                         <br>
@@ -238,7 +254,9 @@
                         <br>
                         <input type="number" name="stok" placeholder="Stok" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success" name="addnewperlatan"><b>Submit</b></button>
+                        <input type="file" name="file" class="form-control" required>
+                        <br>
+                        <button type="submit" class="btn btn-success" name="addnewperalatan"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>               
