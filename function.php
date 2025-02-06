@@ -145,7 +145,12 @@ if (isset($_POST['updateperalatan'])) {
 
 // hapus stok peralatan
 if (isset($_POST['hapusperalatan'])) {
-    $idp = $_POST['idp'];
+    $idp = $_POST['idp']; // od peralatan
+
+    $gambar = mysqli_query($conn, "SELECT * FROM WHERE id_peralatan='$idp'");
+    $get = mysqli_fetch_array($gambar);
+    $img = 'images/'.$get['gambar'];
+    unlink($img);
 
     $hapus = mysqli_query($conn, "DELETE FROM stok_peralatan WHERE id_peralatan='$idp'");
     if ($hapus) {
