@@ -133,13 +133,37 @@ if (isset($_POST['updateperalatan'])) {
     $idp = $_POST['idp'];
     $nama_peralatan = $_POST['nama_peralatan'];
     $deskripsi = $_POST['deskripsi'];
+    
+    // soal gambar
+    $allowed_extension = array('png','jpg'); 
+    $nama = $_FILES['file']['name']; // mengambil nama gambar
+    $dot = explode('.',$nama); 
+    $ekstensi = strtolower(end($dot)); // mengambil ektensinya
+    $ukuran = $_FILES['file']['size']; // mengambil size filenya
+    $file_tmp = $_FILES['file']['tmp_name']; // mengambil lokasi filenya
 
-    $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi' WHERE id_peralatan='$idp'");
-    if ($update) {
-        header('location: index.php');
+    // penamaan file -> enkripsi
+    $image = md5(uniqid($nama, true) . time()).'.'.$ekstensi; // menggabungkan nama file yang dienkripsi dengan ekstensinya
+
+    if ($ukuran == 0) {
+        // jika tidak ingin upload
+        $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi' WHERE id_peralatan='$idp'");
+        if ($update) {
+            header('location: index.php');
+        } else {
+            echo "gagal";
+            header('location: index.php');
+        }
     } else {
-        echo "gagal";
-        header('location: index.php');
+        // jika ingin upload
+        move_uploaded_file($file_tmp, 'images/'.$image);
+        $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi', gambar='$image' WHERE id_peralatan='$idp'");
+        if ($update) {
+            header('location: index.php');
+        } else {
+            echo "gagal";
+            header('location: index.php');
+        }
     }
 }
 

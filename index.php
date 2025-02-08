@@ -154,7 +154,7 @@
                                                         </div>
                                                         
                                                         <!-- Modal body -->
-                                                        <form method="post">
+                                                        <form method="post" enctype="multipart/form-data">
                                                             <div class="modal-body">
                                                                 <label for="nama_peralatan"><b>Nama Peralatan</b></label>
                                                                 <br>
@@ -164,7 +164,7 @@
                                                                 <br>
                                                                 <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
                                                                 <br>
-                                                                <input type="file" name="gambar" value="<?= $gambar; ?>" class="form-control" required>
+                                                                <input type="file" name="file" value="<?= $gambar; ?>" class="form-control">
                                                                 <br>
                                                                 <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                                 <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>

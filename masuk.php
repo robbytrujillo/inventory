@@ -170,6 +170,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
+                                            <th>Gambar</th>
                                             <th>Nama Peralatan</th>
                                             <th>Jumlah Masuk</th>
                                             <th>Keterangan</th>
@@ -188,10 +189,21 @@
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_masuk = $data['jumlah_masuk'];
                                             $keterangan = $data['keterangan'];
+
+                                            // cek ada gambar atau tidak
+                                            $gambar = $data['gambar']; // ambil gambar
+                                            if ($gambar == null) {
+                                                // jika tidak ada gambar
+                                                $img = 'No Photo';
+                                            } else {
+                                                // jika ada gambar
+                                                $img = '<img src="images/'.$gambar.'" class="zoomable">';
+                                            }
                                         ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $tanggal; ?></td>
+                                            <td><?= $gambar; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $jumlah_masuk; ?></td>
                                             <td><?= $keterangan; ?></td>
