@@ -6,3 +6,8 @@
     transform: scale(1.5);
     transition: 0.3s ease;
 }
+
+a {
+    text-decoration: none;
+    color: #000000;
+}

@@ -1,6 +1,9 @@
 <?php 
     require 'function.php';
     require 'cek.php';
+
+    // Dapetkan ID barang yang dipassing di halaman sebelumnya
+    $id_peralatan = $_GET['id']; // get id peralatan
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard | Inventory</title>
+        <title>Stok | Detail Peralatan</title>
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -129,7 +132,7 @@
                                             <tr>
                                                 <td><?= $i++; ?></td>
                                                 <td><?= $img; ?></td>
-                                                <td><strong><a href="detail.php?id=<?= $idp; ?>"><?= $nama_peralatan; ?></a></strong></td>
+                                                <td><?= $nama_peralatan; ?></td>
                                                 <td><?= $deskripsi; ?></td>
                                                 <td><?= $stok; ?></td>
                                                 <td>
