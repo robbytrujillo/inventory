@@ -23,6 +23,8 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="css/style-image.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -166,6 +168,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
+                                            <th>Gambar</th>
                                             <th>Nama Peralatan</th>
                                             <th>Jumlah Keluar</th>
                                             <th>Penerima</th>
@@ -186,10 +189,21 @@
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_keluar = $data['jumlah_keluar'];
                                             $penerima = $data['penerima'];
+
+                                             // cek ada gambar atau tidak
+                                             $gambar = $data['gambar']; // ambil gambar
+                                             if ($gambar == null) {
+                                                 // jika tidak ada gambar
+                                                 $img = 'No Photo';
+                                             } else {
+                                                 // jika ada gambar
+                                                 $img = '<img src="images/'.$gambar.'" class="zoomable">';
+                                             }
                                         ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $tanggal; ?></td>
+                                            <td><?= $img; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $jumlah_keluar; ?></td>
                                             <td><?= $penerima; ?></td>

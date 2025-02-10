@@ -23,6 +23,8 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script></nav>
+
+        <link rel="stylesheet" href="css/style-image.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -203,7 +205,7 @@
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $tanggal; ?></td>
-                                            <td><?= $gambar; ?></td>
+                                            <td><?= $img; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $jumlah_masuk; ?></td>
                                             <td><?= $keterangan; ?></td>
