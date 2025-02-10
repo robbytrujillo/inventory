@@ -4,6 +4,9 @@
 
     // Dapetkan ID barang yang dipassing di halaman sebelumnya
     $id_peralatan = $_GET['id']; // get id peralatan
+
+    // Get informasi peralatan berdasarkan database
+    $get = mysqli_query($conn,  "SELECT 8 FROM stok_peralatan WHERE id_peralatan='$id_peralatan'");
 ?>
 
 <!DOCTYPE html>
