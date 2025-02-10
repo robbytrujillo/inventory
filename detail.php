@@ -6,7 +6,24 @@
     $id_peralatan = $_GET['id']; // get id peralatan
 
     // Get informasi peralatan berdasarkan database
-    $get = mysqli_query($conn,  "SELECT 8 FROM stok_peralatan WHERE id_peralatan='$id_peralatan'");
+    $get = mysqli_query($conn,  "SELECT * FROM stok_peralatan WHERE id_peralatan='$id_peralatan'");
+    $fetch = mysqli_fetch_assoc($get);
+
+    // set variable
+    $nama_peralatan = $fetch['nama_peralatan'];
+    $deskripsi = $fetch['deskripsi'];
+    $stok = $fetch['stok'];
+    // $gambar = $fetch['gambar'];
+
+    // cek ada gambar atau tidak
+    $gambar = $fetch['gambar']; // ambil gambar
+    if ($gambar == null) {
+        // jika tidak ada gambar
+        $img = 'No Photo';
+    } else {
+        // jika ada gambar
+        $img = '<img src="images/'.$gambar.'" class="zoomable">';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -75,29 +92,23 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Stok Peralatan</h1>                     
+                        <h1 class="mt-4">Detail Peralatan</h1>                     
                             <div class="card mb-4">
                                 <div class="card-header">
-                                        <!-- Button to Open the Modal -->
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                                            <b>Tambah Stok Peralatan</b>
-                                        </button>
-                                        <a href="export-stok-peralatan.php" class="btn btn-info"><b>Export Data</b></a>
+                                    <?= $nama_peralatan; ?>
+                                    <?= $img; ?>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">Deskripsi</div>
+                                        <div class="col-md-9"><?= $deskripsi; ?></div>
                                     </div>
-                                    <div class="card-body">
-                                        <?php 
-                                            $ambildatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE stok < 1");
 
-                                            while ($fetch = mysqli_fetch_array($ambildatastok)) {
-                                                $peralatan = $fetch['nama_peralatan'];                                           
-                                        ?>    
-                                            <div class="alert alert-danger alert-dismissible">
-                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                <strong>Perhatian!</strong> Stok Peralatan <b><?= $peralatan ?></b> telah habis.
-                                            </div>
-                                        <?php 
-                                             }
-                                        ?>    
+                                    <div class="row">
+                                        <div class="col-md-3">Stok</div>
+                                        <div class="col-md-9"><?= $stok; ?></div>
+                                    </div>
 
                                     <table id="datatablesSimple">                                       
                                         <thead>
@@ -112,100 +123,20 @@
                                         </thead>
                                         <tbody>
                                             <?php 
-                                            $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM stok_peralatan");
-                                            $i = 1;
+                                            $ambildatamasuk = mysqli_query($conn, "SELECT * FROM peralatan_masuk WHERE id_peralatan = '$id_peralatan'");
 
-                                            while($data=mysqli_fetch_array($ambilsemuadatastok)) {
-                                                $gambar = $data['gambar'];                                          
-                                                $nama_peralatan = $data['nama_peralatan'];
-                                                $deskripsi = $data['deskripsi'];
-                                                $stok = $data['stok'];
-                                                $idp = $data['id_peralatan'];
-
-                                                // cek ada gambar atau tidak
-                                                $gambar = $data['gambar']; // ambil gambar
-                                                if ($gambar == null) {
-                                                    // jika tidak ada gambar
-                                                    $img = 'No Photo';
-                                                } else {
-                                                    // jika ada gambar
-                                                    $img = '<img src="images/'.$gambar.'" class="zoomable">';
-                                                }
+                                            while ($fetch = mysqli_fetch_array($ambildatamasuk)) {
+                                                $tanggal = $fetch['tanggal'];                                           
+                                                $keterangan = $fetch['keterangan'];                                           
+                                                $jumlah_masuk = $fetch['jumlah_masuk'];   
                                             ?>
                                             <tr>
                                                 <td><?= $i++; ?></td>
-                                                <td><?= $img; ?></td>
-                                                <td><?= $nama_peralatan; ?></td>
-                                                <td><?= $deskripsi; ?></td>
-                                                <td><?= $stok; ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>   
-                                                </td>
+                                                <td><?= $tanggal; ?></td>
+                                                <td><?= $keterangan; ?></td>
+                                                <td><?= $jumlah_masuk; ?></td>
                                             </tr>
 
-                                            <!-- Edit Modal -->
-                                            <div class="modal fade" id="edit<?= $idp; ?>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                    
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                        <h4 class="modal-title">Ubah Peralatan</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-                                                        
-                                                        <!-- Modal body -->
-                                                        <form method="post" enctype="multipart/form-data">
-                                                            <div class="modal-body">
-                                                                <label for="nama_peralatan"><b>Nama Peralatan</b></label>
-                                                                <br>
-                                                                <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
-                                                                <br>
-                                                                <label for="deskripsi"><b>Deskripsi</b></label>
-                                                                <br>
-                                                                <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control" required>
-                                                                <br>
-                                                                <input type="file" name="file" value="<?= $gambar; ?>" class="form-control">
-                                                                <br>
-                                                                <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                                <button type="submit" class="btn btn-warning" name="updateperalatan"><b>Update</b></button>
-                                                                <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Delete Modal -->
-                                            <div class="modal fade" id="delete<?= $idp; ?>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                    
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                        <h4 class="modal-title">Hapus Peralatan?</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-                                                        
-                                                        <!-- Modal body -->
-                                                        <form method="post">
-                                                            <div class="modal-body">
-                                                                Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
-                                                                <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                                <br>
-                                                                <br>
-                                                                <button type="submit" class="btn btn-danger" name="hapusperalatan"><b>Hapus</b></button>
-                                                                <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             
                                             <?php 
                                             };
