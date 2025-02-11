@@ -157,10 +157,19 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-success mb-3 rounded-pill" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
                                     <b>Tambah Peralatan Keluar</b>
                                 </button>
+                                <div class="row">
+                                   <div class="col">
+                                        <form method="POST" class="form-inline">
+                                            <input type="date" name="tgl_mulai" class="form-control col-md-2 mb-3">
+                                            <input type="date" name="tgl_selesai" class="form-control col-md-2 mb-3 ml-3">
+                                            <button type="submit" class="btn btn-info mb-3 ml-3 rounded-pill" name="filter_tgl">Filter</button>
+                                        </form>
+                                   </div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -179,7 +188,20 @@
                                     </thead>
                                     <tbody>
                                     <?php 
-                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan");
+                                        if (isset($_POST['filter_tgl'])) {
+                                            $tgl_mulai = $_POST['tgl_mulai'];
+                                            $tgl_selesai = $_POST['tgl_selesai'];
+
+                                            if ($tgl_mulai != null || $tgl_selesai != null) {
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan AND tanggal_keluar BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_keluar DESC");
+                                            } else {
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_leluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
+                                            }
+                                        }          
+                                        else {
+                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
+                                        }
+                                        
                                         $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
