@@ -161,7 +161,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
-                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-success mb-3 rounded-pill" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
                                     <b>Tambah Peralatan Masuk</b>
                                 </button>
@@ -170,7 +170,7 @@
                                         <form method="POST" class="form-inline">
                                             <input type="date" name="tgl_mulai" class="form-control col-md-2 mb-3">
                                             <input type="date" name="tgl_selesai" class="form-control col-md-2 mb-3 ml-3">
-                                            <button type="submit" class="btn btn-info mb-3 ml-3" name="filter_tgl">Filter</button>
+                                            <button type="submit" class="btn btn-info mb-3 ml-3 rounded-pill" name="filter_tgl">Filter</button>
                                         </form>
                                    </div>
                                 </div>
