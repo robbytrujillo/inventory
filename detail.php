@@ -93,74 +93,97 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Detail Peralatan</h1>                     
-                            <div class="card mb-4">
+                            <div class="card mb-4 mt-4">
                                 <div class="card-header">
-                                    <?= $nama_peralatan; ?>
+                                    <h2><?= $nama_peralatan; ?></h2>
                                     <?= $img; ?>
                                     
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">Deskripsi</div>
-                                        <div class="col-md-9"><?= $deskripsi; ?></div>
+                                        <div class="col-md-9">: <?= $deskripsi; ?></div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-3">Stok</div>
-                                        <div class="col-md-9"><?= $stok; ?></div>
+                                        <div class="col-md-9">: <?= $stok; ?></div>
                                     </div>
 
-                                    <table id="datatablesSimple">                                       
+                                    <br><br>
+
+                                    <h3>Peralatan Masuk</h3>   
+                                    <table id="datatablesSimple" class="table table-bordered" id="peralatanmasuk" width="100%" cellspacing="0">                                       
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Gambar</th>
-                                                <th>Nama Peralatan</th>
-                                                <th>Deskripsi</th>
-                                                <th>Stok</th>
-                                                <th>Aksi</th>
+                                                <th>Tanggal</th>
+                                                <th>Keterangan</th>
+                                                <th>Jumlah Masuk</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
-                                            $ambildatamasuk = mysqli_query($conn, "SELECT * FROM peralatan_masuk WHERE id_peralatan = '$id_peralatan'");
+                                                $ambildatamasuk = mysqli_query($conn, "SELECT * FROM peralatan_masuk WHERE id_peralatan = '$id_peralatan'");
+                                                $i = 1;
 
-                                            while ($fetch = mysqli_fetch_array($ambildatamasuk)) {
-                                                $tanggal = $fetch['tanggal'];                                           
-                                                $keterangan = $fetch['keterangan'];                                           
-                                                $jumlah_masuk = $fetch['jumlah_masuk'];   
+                                                while ($fetch = mysqli_fetch_array($ambildatamasuk)) {
+                                                    $tanggal = $fetch['tanggal'];                                           
+                                                    $keterangan = $fetch['keterangan'];                                           
+                                                    $jumlah_masuk = $fetch['jumlah_masuk'];   
                                             ?>
-                                            <tr>
-                                                <td><?= $i++; ?></td>
-                                                <td><?= $tanggal; ?></td>
-                                                <td><?= $keterangan; ?></td>
-                                                <td><?= $jumlah_masuk; ?></td>
-                                            </tr>
-
+                                                <tr>
+                                                    <td><?= $i++; ?></td>
+                                                    <td><?= $tanggal; ?></td>
+                                                    <td><?= $keterangan; ?></td>
+                                                    <td><?= $jumlah_masuk; ?></td>
+                                                </tr>
                                             
                                             <?php 
                                             };
                                             ?>
+
+                                        </tbody>
+                                    </table>
+
+                                    <h3>Peralatan Keluar</h3>   
+                                    <table id="datatablesSimple" class="table table-bordered" id="peralatankeluar" width="100%" cellspacing="0">                                       
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Tanggal Keluar</th>
+                                                <th>Penerima</th>
+                                                <th>Jumlah Keluar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                $ambildatakeluar = mysqli_query($conn, "SELECT * FROM peralatan_keluar WHERE id_peralatan = '$id_peralatan'");
+                                                $i = 1;
+
+                                                while ($fetch = mysqli_fetch_array($ambildatakeluar)) {
+                                                    $tanggal_keluar = $fetch['tanggal_keluar'];                                           
+                                                    $penerima = $fetch['penerima'];                                           
+                                                    $jumlah_keluar = $fetch['jumlah_keluar'];   
+                                            ?>
+                                                <tr>
+                                                    <td><?= $i++; ?></td>
+                                                    <td><?= $tanggal_keluar; ?></td>
+                                                    <td><?= $penerima; ?></td>
+                                                    <td><?= $jumlah_keluar; ?></td>
+                                                </tr>
+                                            
+                                            <?php 
+                                            };
+                                            ?>
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                     </div>
                 </main>
-                <!-- <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="col-md-6 text-center text-md-left">
-                                <p class="mb-0">Copyright &copy; <?php echo date('Y'); ?> IT Development IHBS </p>
-                            </div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer> -->
+                
                 <?php 
                 include "footer.php";
                 ?>
