@@ -53,6 +53,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <a class="nav-link" href="peminjaman.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                Peminjaman Peralatan
+                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User

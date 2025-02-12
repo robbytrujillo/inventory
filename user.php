@@ -52,6 +52,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <a class="nav-link" href="peminjaman.php">
+                                <div class="sb-nav-link-icon"<i class="fas fa-hand-holding-usd"></i></div>
+                                Peminjaman Peralatan
+                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
@@ -72,7 +76,7 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                         <!-- Button to Open the Modal -->
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                        <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
                                             <b>Tambah User</b>
                                         </button>
                                         <!-- <a href="export-stok-peralatan.php" class="btn btn-info"><b>Export Data</b></a> -->
@@ -227,8 +231,8 @@
                         <br>
                         <input type="password" name="password" placeholder="Password" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success" name="addnewuser"><b>Submit</b></button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+                        <button type="submit" class="btn btn-success rounded-pill" name="addnewuser"><b>Submit</b></button>
+                        <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>               
             </div>

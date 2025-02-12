@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Peralatan Masuk | Inventory</title>
+        <title>Peralatan Keluar | Inventory</title>
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script></nav>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
         <link rel="stylesheet" href="css/style-image.css">
     </head>
@@ -34,28 +34,6 @@
             <!-- <img src="./assets/img/inventory-logo.png" style="width: 200px; margin-left: 25%; margin-top: 5%"> -->
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            
-            <!-- Navbar Search-->
-            <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form> -->
-            
-            <!-- Navbar-->
-            <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a> 
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul> -->
-
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -75,10 +53,6 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
-                            <a class="nav-link" href="peminjaman.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                                Peminjaman Peralatan
-                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
@@ -95,13 +69,13 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Peralatan Masuk</h1>
+                        <h1 class="mt-4">Peralatan Keluar</h1>                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-success mb-3 rounded-pill" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
-                                    <b>Tambah Peralatan Masuk</b>
+                                    <b>Tambah Peralatan Keluar</b>
                                 </button>
                                 <div class="row">
                                    <div class="col">
@@ -121,66 +95,68 @@
                                             <th>Tanggal</th>
                                             <th>Gambar</th>
                                             <th>Nama Peralatan</th>
-                                            <th>Jumlah Masuk</th>
-                                            <th>Keterangan</th>
+                                            <th>Jumlah Keluar</th>
+                                            <th>Penerima</th>
                                             <th>Aksi</th>
+                                            <!-- <th>Start date</th>
+                                            <th>Salary</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
+                                    <?php 
                                         if (isset($_POST['filter_tgl'])) {
                                             $tgl_mulai = $_POST['tgl_mulai'];
                                             $tgl_selesai = $_POST['tgl_selesai'];
 
                                             if ($tgl_mulai != null || $tgl_selesai != null) {
-                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_masuk m,     stok_peralatan s WHERE s.id_peralatan = m.id_peralatan AND tanggal BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_masuk DESC");
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan AND tanggal_keluar BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_keluar DESC");
                                             } else {
-                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_masuk m, stok_peralatan s WHERE s.id_peralatan = m.id_peralatan ORDER BY id_masuk DESC");
-                                            }                                            
-                                        } else {
-                                            $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_masuk m, stok_peralatan s WHERE s.id_peralatan = m.id_peralatan ORDER BY id_masuk DESC");
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_leluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
+                                            }
+                                        }          
+                                        else {
+                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
                                         }
-
+                                        
                                         $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
+                                            $idk = $data['id_keluar'];
                                             $idp = $data['id_peralatan'];
-                                            $idm = $data['id_masuk'];
-                                            $tanggal = $data['tanggal'];
+                                            $tanggal = $data['tanggal_keluar'];
                                             $nama_peralatan = $data['nama_peralatan'];
-                                            $jumlah_masuk = $data['jumlah_masuk'];
-                                            $keterangan = $data['keterangan'];
+                                            $jumlah_keluar = $data['jumlah_keluar'];
+                                            $penerima = $data['penerima'];
 
-                                            // cek ada gambar atau tidak
-                                            $gambar = $data['gambar']; // ambil gambar
-                                            if ($gambar == null) {
-                                                // jika tidak ada gambar
-                                                $img = 'No Photo';
-                                            } else {
-                                                // jika ada gambar
-                                                $img = '<img src="images/'.$gambar.'" class="zoomable">';
-                                            }
+                                             // cek ada gambar atau tidak
+                                             $gambar = $data['gambar']; // ambil gambar
+                                             if ($gambar == null) {
+                                                 // jika tidak ada gambar
+                                                 $img = 'No Photo';
+                                             } else {
+                                                 // jika ada gambar
+                                                 $img = '<img src="images/'.$gambar.'" class="zoomable">';
+                                             }
                                         ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $tanggal; ?></td>
                                             <td><?= $img; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
-                                            <td><?= $jumlah_masuk; ?></td>
-                                            <td><?= $keterangan; ?></td>
+                                            <td><?= $jumlah_keluar; ?></td>
+                                            <td><?= $penerima; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idm; ?>">
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idk; ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <!-- <input type="hidden" name="idperalatanygmaudihapus" value="<?= $idp; ?>"> -->
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idm; ?>">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idk; ?>">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
 
                                         <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?= $idm; ?>">
+                                        <div class="modal fade" id="edit<?= $idk; ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
@@ -195,17 +171,17 @@
                                                         <div class="modal-body">
                                                             <!-- <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
                                                             <br> -->
-                                                            <label><b>Jumlah Masuk</b></label>
+                                                            <label><b>Jumlah Keluar</b></label>
                                                             <br>
-                                                            <input type="number" name="jumlah_masuk" value="<?= $jumlah_masuk; ?>" class="form-control" required>
+                                                            <input type="number" name="jumlah_keluar" value="<?= $jumlah_keluar; ?>" class="form-control" required>
                                                             <br>
-                                                            <label><b>Keterangan</b></label>
+                                                            <label><b>Penerima</b></label>
                                                             <br>
-                                                            <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control" required>
+                                                            <input type="text" name="penerima" value="<?= $penerima; ?>" class="form-control" required>
                                                             <br>
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <input type="hidden" name="idm" value="<?= $idm; ?>">
-                                                            <button type="submit" class="btn btn-warning" name="updateperalatanmasuk"><b>Update</b></button>
+                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                            <button type="submit" class="btn btn-warning" name="updateperalatankeluar"><b>Update</b></button>
                                                             <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                         </div>
                                                     </form>
@@ -214,7 +190,7 @@
                                         </div>
                                         
                                         <!-- Delete Modal -->
-                                        <div class="modal fade" id="delete<?= $idm; ?>">
+                                        <div class="modal fade" id="delete<?= $idk; ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
@@ -229,11 +205,11 @@
                                                         <div class="modal-body">
                                                             Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <input type="hidden" name="jumlah_masuk" value="<?= $jumlah_masuk; ?>">
-                                                            <input type="hidden" name="idm" value="<?= $idm; ?>">
+                                                            <input type="hidden" name="jumlah_keluar" value="<?= $jumlah_keluar; ?>">
+                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
                                                             <br>
                                                             <br>
-                                                            <button type="submit" class="btn btn-danger" name="hapusperalatanmasuk"><b>Hapus</b></button>
+                                                            <button type="submit" class="btn btn-danger" name="hapusperalatankeluar"><b>Hapus</b></button>
                                                             <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                         </div>
                                                     </form>
@@ -244,14 +220,12 @@
                                         <?php 
                                         };
                                         ?>
-                                    
-                                    
                                         
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
+                       
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -275,7 +249,7 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-
+    
          <!-- The Modal -->
          <div class="modal fade" id="myModal">
             <div class="modal-dialog">
@@ -283,14 +257,14 @@
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Tambah Peralatan Masuk</h4>
+                <h4 class="modal-title">Tambah Peralatan Keluar</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
                 <!-- Modal body -->
                 <form method="post">
                     <div class="modal-body">
-                        <select name="peralatannya" class="form-control">
+                    <select name="peralatannya" class="form-control">
                             <?php  
                                 $ambilsemuadatanya = mysqli_query($conn, "SELECT * FROM stok_peralatan");
                                 while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)) {
@@ -304,11 +278,11 @@
                         </select>
                         <!-- <input type="text" name="nama_peralatan" placeholder="Nama Peralatan" class="form-control" required> -->
                         <br>
-                        <input type="number" name="jumlah_masuk" placeholder="Jumlah Masuk" class="form-control" required>
+                        <input type="number" name="jumlah_keluar" placeholder="Jumlah Keluar" class="form-control" required>
                         <br>
                         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
-                        <br> 
-                        <button type="submit" class="btn btn-success" name="peralatanmasuk"><b>Submit</b></button>
+                        <br>
+                        <button type="submit" class="btn btn-success" name="addperalatankeluar"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>
@@ -323,5 +297,4 @@
         </div>
     
     </body>
-
 </html>
