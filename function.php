@@ -363,6 +363,29 @@ if (isset($_POST['hapususer'])) {
 
 // Meminjam peralatan
 if (isset($_POST['pinjam'])) {
-    $id_peralatan = $_POST['peralatannya'];
+    $id_peralatan = $_POST['peralatannya']; // mengambil id_peralatan dari form
+    $jumlah_peminjaman = $_POST['jumlah_peminjaman']; // mengambil jumlah_peminjaman
+    $peminjam = $_POST['peminjam']; // mengambil nama penerima
+
+    // mulai query insert
+    $insertpinjam = mysqli_query($conn, "INSERT INTO peminjaman (id_peralatan, jumlah_peminjaman, peminjam) VALUES ('$id_peralatan','$jumlah_peminjaman','$peminjam')");
+
+    if ($insertpinjam) {
+        // jika berhasil
+        echo '
+            <script>
+                alert("Berhasil");
+                window.location.href = "peminjaman.php";
+            </script>
+        ';
+    } else {
+        // jika gagal
+        echo '
+        <script>
+            alert("Gagal");
+            window.location.href = "peminjaman.php";
+        </script>
+    ';
+    }
 }
 ?>

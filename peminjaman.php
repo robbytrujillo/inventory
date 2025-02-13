@@ -99,7 +99,7 @@
                                             <th>Tanggal</th>
                                             <th>Gambar</th>
                                             <th>Nama Peralatan</th>
-                                            <th>Jumlah Keluar</th>
+                                            <th>Jumlah Peminjaman</th>
                                             <th>Kepada</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
@@ -114,9 +114,9 @@
                                             $tgl_selesai = $_POST['tgl_selesai'];
 
                                             if ($tgl_mulai != null || $tgl_selesai != null) {
-                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peminjaman k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan AND tanggal_keluar BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_keluar DESC");
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peminjaman p, stok_peralatan s WHERE s.id_peralatan = p.id_peralatan AND tanggal_pinjam BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_peminjaman DESC");
                                             } else {
-                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_leluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar p, stok_peralatan s WHERE s.id_peralatan = p.id_peralatan ORDER BY id_peminjaman DESC");
                                             }
                                         }          
                                         else {
@@ -126,12 +126,12 @@
                                         $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadatastok)) {
-                                            $idk = $data['id_keluar'];
+                                            $idk = $data['id_peminjaman'];
                                             $idp = $data['id_peralatan'];
-                                            $tanggal = $data['tanggal_keluar'];
+                                            $tanggal_pinjam = $data['tanggal_pinjam'];
                                             $nama_peralatan = $data['nama_peralatan'];
-                                            $jumlah_keluar = $data['jumlah_keluar'];
-                                            $penerima = $data['penerima'];
+                                            $jumlah_peminjaman = $data['jumlah_peminjaman'];
+                                            $peminjam = $data['peminjam'];
                                             $status = $data['status'];
 
                                              // cek ada gambar atau tidak
@@ -146,11 +146,11 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $tanggal; ?></td>
+                                            <td><?= $tanggal_pinjam; ?></td>
                                             <td><?= $img; ?></td>
                                             <td><?= $nama_peralatan; ?></td>
-                                            <td><?= $jumlah_keluar; ?></td>
-                                            <td><?= $penerima; ?></td>
+                                            <td><?= $jumlah_peminjaman; ?></td>
+                                            <td><?= $peminjam; ?></td>
                                             <td><?= $status; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idk; ?>">
@@ -163,7 +163,7 @@
                                         </tr>
 
                                         <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?= $idk; ?>">
+                                        <div class="modal fade" id="edit<?= $idpi; ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
@@ -187,7 +187,7 @@
                                                             <input type="text" name="penerima" value="<?= $penerima; ?>" class="form-control" required>
                                                             <br>
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
-                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                            <input type="hidden" name="idpi" value="<?= $idk; ?>">
                                                             <button type="submit" class="btn btn-warning" name="updateperalatankeluar"><b>Update</b></button>
                                                             <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                         </div>
@@ -213,7 +213,7 @@
                                                             Apakah anda yakin ingin menghapus <b><?= $nama_peralatan; ?></b>?
                                                             <input type="hidden" name="idp" value="<?= $idp; ?>">
                                                             <input type="hidden" name="jumlah_keluar" value="<?= $jumlah_keluar; ?>">
-                                                            <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                            <input type="hidden" name="idpi" value="<?= $idpi; ?>">
                                                             <br>
                                                             <br>
                                                             <button type="submit" class="btn btn-danger" name="hapusperalatankeluar"><b>Hapus</b></button>
@@ -285,7 +285,7 @@
                         </select>
                         <!-- <input type="text" name="nama_peralatan" placeholder="Nama Peralatan" class="form-control" required> -->
                         <br>
-                        <input type="number" name="jumlah_keluar" placeholder="Jumlah Keluar" class="form-control" required>
+                        <input type="number" name="jumlah_peminjaman" placeholder="Jumlah Peminjaman" class="form-control" required>
                         <br>
                         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
                         <br>
