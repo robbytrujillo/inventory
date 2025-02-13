@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Peralatan Keluar | Inventory</title>
+        <title>Peminjaman Peralatan | Inventory</title>
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -53,6 +53,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
+                            <a class="nav-link" href="peminjaman.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                Peminjaman Peralatan
+                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
@@ -69,13 +73,13 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Peralatan Keluar</h1>                        
+                        <h1 class="mt-4">Peminjaman Peralatan</h1>                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-success mb-3 rounded-pill" data-toggle="modal" data-target="#myModal">
                                     <!-- <i class="far fa-plus-square"></i>  -->
-                                    <b>Tambah Peralatan Keluar</b>
+                                    <b>Tambah Peminjaman</b>
                                 </button>
                                 <div class="row">
                                    <div class="col">
@@ -96,7 +100,8 @@
                                             <th>Gambar</th>
                                             <th>Nama Peralatan</th>
                                             <th>Jumlah Keluar</th>
-                                            <th>Penerima</th>
+                                            <th>Kepada</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                             <!-- <th>Start date</th>
                                             <th>Salary</th> -->
@@ -109,13 +114,13 @@
                                             $tgl_selesai = $_POST['tgl_selesai'];
 
                                             if ($tgl_mulai != null || $tgl_selesai != null) {
-                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan AND tanggal_keluar BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_keluar DESC");
+                                                $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peminjaman k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan AND tanggal_keluar BETWEEN '$tgl_mulai' AND  DATE_ADD('$tgl_selesai', INTERVAL 1 DAY) ORDER BY id_keluar DESC");
                                             } else {
                                                 $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_leluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
                                             }
                                         }          
                                         else {
-                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peralatan_keluar k, stok_peralatan s WHERE s.id_peralatan = k.id_peralatan ORDER BY id_keluar DESC");
+                                        $ambilsemuadatastok = mysqli_query($conn, "SELECT * FROM peminjaman p, stok_peralatan s WHERE s.id_peralatan = p.id_peralatan ORDER BY id_peminjaman DESC");
                                         }
                                         
                                         $i = 1;
@@ -127,6 +132,7 @@
                                             $nama_peralatan = $data['nama_peralatan'];
                                             $jumlah_keluar = $data['jumlah_keluar'];
                                             $penerima = $data['penerima'];
+                                            $status = $data['status'];
 
                                              // cek ada gambar atau tidak
                                              $gambar = $data['gambar']; // ambil gambar
@@ -145,6 +151,7 @@
                                             <td><?= $nama_peralatan; ?></td>
                                             <td><?= $jumlah_keluar; ?></td>
                                             <td><?= $penerima; ?></td>
+                                            <td><?= $status; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idk; ?>">
                                                     <i class="fas fa-edit"></i>
@@ -257,7 +264,7 @@
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Tambah Peralatan Keluar</h4>
+                <h4 class="modal-title">Tambah Peminjaman Peralatan</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
@@ -282,7 +289,7 @@
                         <br>
                         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success" name="addperalatankeluar"><b>Submit</b></button>
+                        <button type="submit" class="btn btn-success" name="pinjam"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>

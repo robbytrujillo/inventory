@@ -361,4 +361,8 @@ if (isset($_POST['hapususer'])) {
     }
 }
 
+// Meminjam peralatan
+if (isset($_POST['pinjam'])) {
+    $id_peralatan = $_POST['peralatannya'];
+}
 ?>
