@@ -367,9 +367,20 @@ if (isset($_POST['pinjam'])) {
     $jumlah_peminjaman = $_POST['jumlah_peminjaman']; // mengambil jumlah_peminjaman
     $peminjam = $_POST['peminjam']; // mengambil nama penerima
 
+    // ambil stok sekarang
+    $stok_saat_ini = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan = '$id_peralatan'");
+    $stoknya = mysqli_fetch_assoc($stok_saat_ini);
+    $stok = $stoknya['stok']; // ini valuenya
+
+    // kurangi stoknya
+    $new_stok = $stok - $jumlah_peminjaman;
+
     // mulai query insert
     $insertpinjam = mysqli_query($conn, "INSERT INTO peminjaman (id_peralatan, jumlah_peminjaman, peminjam) VALUES ('$id_peralatan','$jumlah_peminjaman','$peminjam')");
 
+    // mengurangi stok di table stok peralatan
+    $kurangistok = mysqli_query($conn, "UPDATE stok_peralatan SET stok = '$new_stok' WHERE id_peralatan = '$id_peralatan'");
+    
     if ($insertpinjam) {
         // jika berhasil
         echo '
