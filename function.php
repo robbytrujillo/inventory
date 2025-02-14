@@ -381,7 +381,52 @@ if (isset($_POST['pinjam'])) {
     // mengurangi stok di table stok peralatan
     $kurangistok = mysqli_query($conn, "UPDATE stok_peralatan SET stok = '$new_stok' WHERE id_peralatan = '$id_peralatan'");
     
-    if ($insertpinjam) {
+    if ($insertpinjam && $kurangistok) {
+        // jika berhasil
+        echo '
+            <script>
+                alert("Berhasil");
+                window.location.href = "peminjaman.php";
+            </script>
+        ';
+    } else {
+        // jika gagal
+        echo '
+        <script>
+            alert("Gagal");
+            window.location.href = "peminjaman.php";
+        </script>
+    ';
+    }
+}
+
+// menyelesaikan pinjaman
+if (isset($_POST['peralatankembali'])) {
+    $id_pinjam = $_POST['id_pinjam'];
+    $id_peralatan = $_POST['id_peralatan'];
+
+    //ekseskusi
+    $update_status = mysqli_query($conn, "UPDATE peminjaman SET status = 'Kembali' WHERE id_peminjaman = '$id_pinjam'");
+
+    // kembalikan stoknya
+    // ambil stok sekarang
+    $stok_saat_ini = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan = '$id_peralatan'");
+    $stoknya = mysqli_fetch_array($stok_saat_ini);
+    $stok = $stoknya['stok']; // ini valuenya
+
+    // ambil jumlah_peminjaman sekarang
+    $stok_saat_ini1 = mysqli_query($conn, "SELECT * FROM peminjaman WHERE id_peminjaman = '$id_pinjam'");
+    $stoknya1 = mysqli_fetch_array($stok_saat_ini1);
+    $stok1 = $stoknya1['jumlah_peminjaman']; // ini valuenya
+
+    // kurangi stoknya
+    // $new_stok = $stok1 - $jumlah_peminjaman;
+    $new_stok = $stok1 + $stok;
+
+    // kembalikan stoknya
+    $kembalikan_stok = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$new_stok' WHERE id_peralatan = '$id_peralatan'");
+
+    if ($update_status && $kembalikan_stok) {
         // jika berhasil
         echo '
             <script>

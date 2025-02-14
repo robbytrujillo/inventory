@@ -153,9 +153,18 @@
                                             <td><?= $peminjam; ?></td>
                                             <td><?= $status; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idk; ?>">
-                                                    <i class="fas fa-edit">Selesai</i>
-                                                </button>
+                                                <?php 
+                                                    // cek status
+                                                    if ($status == 'Dipinjam') {
+                                                        echo '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit'.$idk.'">
+                                                                <i class="fas fa-edit">Selesai</i>
+                                                             </button>';
+                                                    } else {
+                                                        // jika statusnya bukan dipinjam (kembali);
+                                                        echo 'Barang telah kembali';
+                                                    }
+                                                ?>
+                                                
                                                 
                                             </td>
                                         </tr>
@@ -174,11 +183,9 @@
                                                     <!-- Modal body -->
                                                     <form method="post">
                                                         <div class="modal-body">
-                                                            <!-- <input type="text" name="nama_peralatan" value="<?= $nama_peralatan; ?>" class="form-control" required>
-                                                            <br> -->
                                                             <label class="mb-2">Apakah peralatan ini sudah selesai dipinjam?</label>
                                                             <br>
-                                                            <input type="hidden" name="idp" value="<?= $idp; ?>">
+                                                            <input type="hidden" name="id_peralatan" value="<?= $idp; ?>">
                                                             <input type="hidden" name="id_pinjam" value="<?= $idk; ?>">
                                                             <button type="submit" class="btn btn-success" name="peralatankembali"><b>Iya</b></button>
                                                         </div>
@@ -250,7 +257,7 @@
                         <br>
                         <input type="number" name="jumlah_peminjaman" placeholder="Jumlah Peminjaman" class="form-control" required>
                         <br>
-                        <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
+                        <input type="text" name="peminjam" placeholder="Peminjam" class="form-control" required>
                         <br>
                         <button type="submit" class="btn btn-success" name="pinjam"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
