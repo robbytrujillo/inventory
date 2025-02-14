@@ -26,8 +26,9 @@
     }
 
     // generate
-    $urlview = 
-    $qrcode = 'https://chart.googleapis.com/chart?chs=350x350&cht=qr&chl=Hello%20world&choe=UTF-8'
+    $urlview = 'http://localhost/inventory/view.php?id='.$id_peralatan;
+    // $qrcode = 'https://chart.googleapis.com/chart?chs=350x350&cht=qr&chl='.$urlview.'&choe=UTF-8';
+    $qrcode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.$urlview.'';
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +102,7 @@
                                 <div class="card-header">
                                     <h2><?= $nama_peralatan; ?></h2>
                                     <?= $img; ?>
+                                    <img src="<?= $qrcode; ?>">
                                     
                                 </div>
                                 <div class="card-body">
