@@ -42,13 +42,13 @@
 <div class="container mt-4">
     <!-- <h2>Card Image</h2> -->
     <h3>Detail Peralatan</h3>
-    <div class="card" style="width:400px">
+    <div class="card mt-4" style="width:400px">
         <?= $img; ?>
         <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%"> -->
         <div class="card-body">
         <h4 class="card-title"><?= $nama_peralatan; ?></h4>
-        <p class="card-text"><?= $deskripsi; ?></p>
-        <p class="card-text"><?= $stok; ?></p>
+        <h4 class="card-text"><?= $deskripsi; ?></h4>
+        <h4 class="card-text"><?= $stok; ?></h4>
         <!-- <a href="#" class="btn btn-primary"><?= $stok; ?></a> -->
         </div>
     </div>

@@ -24,6 +24,10 @@
         // jika ada gambar
         $img = '<img src="images/'.$gambar.'" class="zoomable">';
     }
+
+    // generate
+    $urlview = 
+    $qrcode = 'https://chart.googleapis.com/chart?chs=350x350&cht=qr&chl=Hello%20world&choe=UTF-8'
 ?>
 
 <!DOCTYPE html>
