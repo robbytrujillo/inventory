@@ -253,12 +253,14 @@ if (isset($_POST['updateperalatankeluar'])) {
     $idp = $_POST['idp'];
     $idk = $_POST['idk'];
     $penerima = $_POST['penerima'];
-    $jumlah_keluar = $_POST['jumlah_keluar'];
+    $jumlah_keluar = $_POST['jumlah_keluar']; // jumlah baru inputan user 
 
+    // mengambil stok peralatan saat ini
     $lihatstok = mysqli_query($conn, "SELECT * FROM stok_peralatan WHERE id_peralatan='$idp;'");
     $stoknya = mysqli_fetch_array($lihatstok);
     $stoksekarang = $stoknya['stok'];
 
+    // jumlah peralatan keluar saat ini
     $jumlah_keluarskrg = mysqli_query($conn, "SELECT * FROM peralatan_keluar where id_keluar='$idk'");
     $jumlah_keluarnya = mysqli_fetch_array($jumlah_keluarskrg);
     $jumlah_keluarskrg = $jumlah_keluarnya['jumlah_keluar'];
@@ -266,14 +268,27 @@ if (isset($_POST['updateperalatankeluar'])) {
     if ($jumlah_keluar > $jumlah_keluarskrg) {
         $selisih = $jumlah_keluar - $jumlah_keluarskrg;
         $kurangin = $stoksekarang - $selisih;
-        $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
-        $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', penerima='$penerima' WHERE id_keluar='$idk'");
-        if ($kurangistoknya && $updatenya) {
-            header('location: keluar.php');
+
+        if ($selisih <= $stoksekarang) {
+            // stok cukup, keluarkan stok -> update table peralatan_keluar, stok_peralatan
+            $kurangistoknya = mysqli_query($conn, "UPDATE stok_peralatan SET stok='$kurangin' WHERE id_peralatan='$idp'");
+            $updatenya = mysqli_query($conn, "UPDATE peralatan_keluar SET jumlah_keluar='$jumlah_keluar', penerima='$penerima' WHERE id_keluar='$idk'");
+            if ($kurangistoknya && $updatenya) {
+                header('location: keluar.php');
+            } else {
+                echo "gagal";
+                header('location: keluar.php');
+            }
         } else {
-            echo "gagal";
-            header('location: keluar.php');
+            echo '
+                <script>
+                    alert("Stok tidak mencukupi");
+                    window.location.href = "keluar.php";
+                </script>
+            ';
         }
+
+        
     } else {
             $selisih = $jumlah_keluarskrg - $jumlah_keluar;
             $kurangin = $stoksekarang + $selisih;
