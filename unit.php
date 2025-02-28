@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard | User</title>
+        <title>Dashboard | Unit</title>
         <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -106,14 +106,14 @@
                                                 while($data=mysqli_fetch_array($ambilsemuadataunit)) {                                          
                                                     $nama_unit = $data['nama_unit'];
                                                     $alamat_unit = $data['alamat_unit'];
-                                                    $penanggug_jawab = $data['penanggug_jawab'];
+                                                    $penanggung_jawab = $data['penanggung_jawab'];
                                                     $idunit = $data['id_unit'];
                                                 ?>
                                                 <tr>
                                                     <td><?= $i++; ?></td>
                                                     <td><?= $nama_unit; ?></td>
                                                     <td><?= $alamat_unit; ?></td>
-                                                    <td><?= $penanggug_jawab; ?></td>
+                                                    <td><?= $penanggung_jawab; ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idunit; ?>">
                                                             <i class="fas fa-edit"></i>
@@ -140,15 +140,15 @@
                                                                 <div class="modal-body">
                                                                     <label for="nama_unit"><b>Nama Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="nama_unitbaru" value="<?= $nama_unit; ?>" class="form-control" placeholder="nama_unit" required>
+                                                                    <input type="text" name="nama_unitbaru" value="<?= $nama_unit; ?>" class="form-control" placeholder="Nama Unit" required>
                                                                     <br>
                                                                     <label for="alamat_unit"><b>Alamat Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="alamat_unitbaru" value="<?= $alamat_unit; ?>" placeholder="alamat_unit" class="form-control" required>
+                                                                    <input type="text" name="alamat_unitbaru" value="<?= $alamat_unit; ?>" placeholder="Alamat Unit" class="form-control" required>
                                                                     <br>
                                                                     <label for="penanggung_jawab"><b>Penanggung Jawab</b></label>
                                                                     <br>
-                                                                    <input type="text" name="penanggung_jawabbaru" placeholder="penanggung_jawab" class="form-control" required>
+                                                                    <input type="text" name="alamat_unitbaru" value="<?= $penanggung_jawab; ?>" placeholder="Penanggung Jawab" class="form-control" required>
                                                                     <br>
                                                                     <input type="hidden" name="idu" value="<?= $idu; ?>">
                                                                     <button type="submit" class="btn btn-warning" name="updateunit"><b>Update</b></button>
