@@ -36,6 +36,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login | Inventory</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>

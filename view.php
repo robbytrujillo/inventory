@@ -36,6 +36,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Menampilkan Peralatan</title> 
+    <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
     <link rel="stylesheet" href="css/style-image.css">
 </head>
 <body>

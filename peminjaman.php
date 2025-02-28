@@ -26,6 +26,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Peminjaman Peralatan | Inventory</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 

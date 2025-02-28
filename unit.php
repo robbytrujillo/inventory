@@ -57,6 +57,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
                                 Peminjaman Peralatan
                             </a>
+                            <a class="nav-link" href="unit.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-hotel"></i></div>
+                                Unit
+                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
@@ -73,12 +77,12 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">User</h1>                     
+                        <h1 class="mt-4">Unit</h1>                     
                             <div class="card mb-4">
                                 <div class="card-header">
                                         <!-- Button to Open the Modal -->
                                         <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
-                                            <b>Tambah User</b>
+                                            <b>Tambah Unit</b>
                                         </button>
                                         <!-- <a href="export-stok-peralatan.php" class="btn btn-info"><b>Export Data</b></a> -->
                                     </div>
@@ -88,66 +92,66 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Username</th>
-                                                    <th>Email</th>
-                                                    <th>Password</th>
+                                                    <th>Nama Unit</th>
+                                                    <th>Alamat</th>
+                                                    <th>Penanggung Jawab</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
-                                                $ambilsemuadatauser = mysqli_query($conn, "SELECT * FROM user");
+                                                $ambilsemuadataunit = mysqli_query($conn, "SELECT * FROM unit");
                                                 $i = 1;
 
-                                                while($data=mysqli_fetch_array($ambilsemuadatauser)) {                                          
-                                                    $username = $data['username'];
-                                                    $email = $data['email'];
-                                                    $password = $data['password'];
-                                                    $idu = $data['iduser'];
+                                                while($data=mysqli_fetch_array($ambilsemuadataunit)) {                                          
+                                                    $nama_unit = $data['nama_unit'];
+                                                    $alamat_unit = $data['alamat_unit'];
+                                                    $penanggug_jawab = $data['penanggug_jawab'];
+                                                    $idunit = $data['id_unit'];
                                                 ?>
                                                 <tr>
                                                     <td><?= $i++; ?></td>
-                                                    <td><?= $username; ?></td>
-                                                    <td><?= $email; ?></td>
-                                                    <td><?= $password; ?></td>
+                                                    <td><?= $nama_unit; ?></td>
+                                                    <td><?= $alamat_unit; ?></td>
+                                                    <td><?= $penanggug_jawab; ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idu; ?>">
+                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idunit; ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idu; ?>">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idunit; ?>">
                                                             <i class="fas fa-trash"></i>
                                                         </button>   
                                                     </td>
                                                 </tr>
 
                                                 <!-- Edit Modal -->
-                                                <div class="modal fade" id="edit<?= $idu; ?>">
+                                                <div class="modal fade" id="edit<?= $idunit; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                            <h4 class="modal-title">Ubah User</h4>
+                                                            <h4 class="modal-title">Ubah Unit</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             
                                                             <!-- Modal body -->
                                                             <form method="post">
                                                                 <div class="modal-body">
-                                                                    <label for="username"><b>Username</b></label>
+                                                                    <label for="nama_unit"><b>Nama Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="usernamebaru" value="<?= $username; ?>" class="form-control" placeholder="Username" required>
+                                                                    <input type="text" name="nama_unitbaru" value="<?= $nama_unit; ?>" class="form-control" placeholder="nama_unit" required>
                                                                     <br>
-                                                                    <label for="email"><b>Email</b></label>
+                                                                    <label for="alamat_unit"><b>Alamat Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="emailbaru" value="<?= $email; ?>" placeholder="Email" class="form-control" required>
+                                                                    <input type="text" name="alamat_unitbaru" value="<?= $alamat_unit; ?>" placeholder="alamat_unit" class="form-control" required>
                                                                     <br>
-                                                                    <label for="password"><b>Password</b></label>
+                                                                    <label for="penanggung_jawab"><b>Penanggung Jawab</b></label>
                                                                     <br>
-                                                                    <input type="text" name="passwordbaru" placeholder="Password" class="form-control" required>
+                                                                    <input type="text" name="penanggung_jawabbaru" placeholder="penanggung_jawab" class="form-control" required>
                                                                     <br>
                                                                     <input type="hidden" name="idu" value="<?= $idu; ?>">
-                                                                    <button type="submit" class="btn btn-warning" name="updateuser"><b>Update</b></button>
+                                                                    <button type="submit" class="btn btn-warning" name="updateunit"><b>Update</b></button>
                                                                     <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                                 </div>
                                                             </form>
@@ -156,24 +160,24 @@
                                                 </div>
                                                 
                                                 <!-- Delete Modal -->
-                                                <div class="modal fade" id="delete<?= $idu; ?>">
+                                                <div class="modal fade" id="delete<?= $idunit; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                            <h4 class="modal-title">Hapus User?</h4>
+                                                            <h4 class="modal-title">Hapus Unit?</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             
                                                             <!-- Modal body -->
                                                             <form method="post">
                                                                 <div class="modal-body">
-                                                                    Apakah anda yakin ingin menghapus <b><?= $username; ?></b>?
-                                                                    <input type="hidden" name="idu" value="<?= $idu; ?>">
+                                                                    Apakah anda yakin ingin menghapus <b><?= $nama_unit; ?></b>?
+                                                                    <input type="hidden" name="idunit" value="<?= $idunit; ?>">
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" class="btn btn-danger" name="hapususer"><b>Hapus</b></button>
+                                                                    <button type="submit" class="btn btn-danger" name="hapusunit"><b>Hapus</b></button>
                                                                     <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                                 </div>
                                                             </form>
@@ -219,20 +223,20 @@
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Tambah User</h4>
+                <h4 class="modal-title">Tambah Unit</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
                 <!-- Modal body -->
                 <form method="post">
                     <div class="modal-body">
-                        <input type="text" name="username" placeholder="Username" class="form-control" required>
+                        <input type="text" name="nama_unit" placeholder="Nama Unit" class="form-control" required>
                         <br>
-                        <input type="text" name="email" placeholder="Email" class="form-control" required>
+                        <input type="text" name="alamat_unit" placeholder="Alamat Unit" class="form-control" required>
                         <br>
-                        <input type="password" name="password" placeholder="Password" class="form-control" required>
+                        <input type="text" name="penanggung_jawab" placeholder="Penanggung Jawab" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success rounded-pill" name="addnewuser"><b>Submit</b></button>
+                        <button type="submit" class="btn btn-success rounded-pill" name="addnewunit"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>               

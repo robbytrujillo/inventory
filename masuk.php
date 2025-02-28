@@ -13,6 +13,8 @@
         <meta name="author" content="" />
         <title>Peralatan Masuk | Inventory</title>
 
+        <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
+
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
