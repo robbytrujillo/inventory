@@ -1,3 +1,3 @@
 ## Inventory Information System
 
-<h2>IHBS Inventory</h2>
+<h2>Inventory IHBS</h2>
