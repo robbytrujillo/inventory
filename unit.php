@@ -148,9 +148,9 @@
                                                                     <br>
                                                                     <label for="penanggung_jawab"><b>Penanggung Jawab</b></label>
                                                                     <br>
-                                                                    <input type="text" name="alamat_unitbaru" value="<?= $penanggung_jawab; ?>" placeholder="Penanggung Jawab" class="form-control" required>
+                                                                    <input type="text" name="penanggung_jawabbaru" value="<?= $penanggung_jawab; ?>" placeholder="Penanggung Jawab" class="form-control" required>
                                                                     <br>
-                                                                    <input type="hidden" name="idu" value="<?= $idu; ?>">
+                                                                    <input type="hidden" name="idunit" value="<?= $idunit; ?>">
                                                                     <button type="submit" class="btn btn-warning" name="updateunit"><b>Update</b></button>
                                                                     <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                                 </div>

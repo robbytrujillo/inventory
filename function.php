@@ -459,55 +459,57 @@ if (isset($_POST['peralatankembali'])) {
     ';
     }
 
-    // Unit
+   
+}
+
+ // Unit
     // Menambah unit baru
-if (isset($_POST['addnewunit'])) {
-    $nama_unit = $_POST['nama_unit'];
-    $alamat_unit = $_POST['alamat_unit'];
-    $penanggung_jawab = $_POST['penanggung_jawab'];
-
-    $queryinsertunit = mysqli_query($conn, "INSERT INTO unit (nama_unit, alamat_unit, penanggung_jawab) VALUES ('$nama_unit', '$alamat_unit', '$penanggung_jawab')");
+    if (isset($_POST['addnewunit'])) {
+        $nama_unit = $_POST['nama_unit'];
+        $alamat_unit = $_POST['alamat_unit'];
+        $penanggung_jawab = $_POST['penanggung_jawab'];
     
-    if ($queryinsertunit) {
-        // if berhasil
-        header('location: unit.php');
-    } else {
-        // if gagal
-        header('location: unit.php');
+        $queryinsertunit = mysqli_query($conn, "INSERT INTO unit (nama_unit, alamat_unit, penanggung_jawab) VALUES ('$nama_unit', '$alamat_unit', '$penanggung_jawab')");
+        
+        if ($queryinsertunit) {
+            // if berhasil
+            header('location: unit.php');
+        } else {
+            // if gagal
+            header('location: unit.php');
+        }
     }
-}
-
-// Update Data Unit
-if (isset($_POST['updateunit'])) {
-    $nama_unit = $_POST['nama_unit'];
-    $alamat_unit = $_POST['alamat_unit'];
-    $penanggung_jawab = $_POST['penanggung_jawab'];
-    $idunit = $_POST['idunit'];
-
-    $queryupdateunit = mysqli_query($conn, "UPDATE unit SET nama_unit= '$nama_unitbaru', alamat_unit= '$alamat_unitbaru', penanggung_jawab= '$penanggung_jawabbaru' WHERE id_unit='$idunit'");
-
-    if ($queryupdateunit) {
-        // if update berhasil
-        header('location: unit.php');
-    } else {
-        // if update gagal
-        header('location: unit.php' );
+    
+    // Update Data Unit
+    if (isset($_POST['updateunit'])) {
+        $nama_unitbaru = $_POST['nama_unitbaru'];
+        $alamat_unitbaru = $_POST['alamat_unitbaru'];
+        $penanggung_jawabbaru = $_POST['penanggung_jawabbaru'];
+        $idunit = $_POST['idunit'];
+    
+        $queryupdateunit = mysqli_query($conn, "UPDATE unit SET nama_unit= '$nama_unitbaru', alamat_unit= '$alamat_unitbaru', penanggung_jawab= '$penanggung_jawabbaru' WHERE id_unit='$idunit'");
+    
+        if ($queryupdateunit) {
+            // if update berhasil
+            header('location: unit.php');
+        } else {
+            // if update gagal
+            header('location: unit.php' );
+        }
     }
-}
-
-// Menghapus data unit
-if (isset($_POST['hapusunit'])) {
-    $idunit = $_POST['idunit'];
-
-    $querydeleteunit = mysqli_query($conn, "DELETE FROM unit WHERE id_unit='$idunit'");
-
-    if ($queryudeleteunit) {
-        // if update berhasil
-        header('location: unit.php');
-    } else {
-        // if update gagal
-        header('location: unit.php' );
+    
+    // Menghapus data unit
+    if (isset($_POST['hapusunit'])) {
+        $idunit = $_POST['idunit'];
+    
+        $querydeleteunit = mysqli_query($conn, "DELETE FROM unit WHERE id_unit='$idunit'");
+    
+        if ($queryudeleteunit) {
+            // if update berhasil
+            header('location: unit.php');
+        } else {
+            // if update gagal
+            header('location: unit.php' );
+        }
     }
-}
-}
 ?>
