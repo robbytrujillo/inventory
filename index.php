@@ -8,7 +8,8 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Inventaris Sekolah</title>
+    <title>Index | Inventory</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -28,17 +29,29 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
             max-width: 150px;
             margin-top: 10px;
         }
+        .search-box {
+            max-width: 400px;
+            margin: auto;
+        }
+        .error-message {
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-success">📦 Sistem Inventaris Sekolah</h2>
+        <!-- <h2 class="text-success">📦 Sistem Inventaris Sekolah</h2> -->
+        <img src="./assets/img/inventory-logo.png" style="width: 150px; margin-left: 0%; margin-top: 0%">
         <a href="login.php" class="btn btn-outline-success">🔐 Login</a>
     </div>
 
-    <form method="GET">
+   
+
+    <form method="GET" class="search-box">
         <div class="input-group mb-4">
             <input type="text" name="nama_ruangan" class="form-control" placeholder="🔍 Cari ruangan..." required>
             <div class="input-group-append">
@@ -47,6 +60,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
         </div>
     </form>
 
+    <div class="row">
     <?php
     if (isset($_GET['nama_ruangan'])) {
         $nama_ruangan = $_GET['nama_ruangan'];
@@ -56,19 +70,17 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
         //         FROM ruangan r
         //         JOIN stok_peralatan s ON r.id_ruangan = s.id_ruangan
         //         WHERE r.nama_ruangan = ?";
-        // $sql = "SELECT r.nama_ruangan, s.nama_peralatan, s.stok 
-        // FROM ruangan r
-        // JOIN stok_peralatan s ON r.id_ruangan = s.id_ruangan
-        // WHERE r.nama_ruangan = ?";
+
         $sql = "SELECT r.nama_ruangan, s.nama_peralatan, s.stok 
         FROM stok_peralatan s
-        JOIN ruangan r ON s.id_peralatan = r.id_peralatan
+        JOIN ruangan r ON s.id_ruangan = r.id_ruangan
         WHERE r.nama_ruangan = ?";
 
 
 
         if (!$stmt = $conn->prepare($sql)) {
-            die("<div class='alert alert-danger'>Query Error: " . $conn->error . "</div>");
+            echo "<div class='alert alert-danger error-message'>Query Error: " . $conn->error . "</div>";
+            exit;
         }
 
         $stmt->bind_param("s", $nama_ruangan);
@@ -78,33 +90,24 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
         if ($result->num_rows > 0) {
             $qr_data = "Ruangan: $nama_ruangan\n\nDaftar Barang:\n";
 
-            echo "<div class='alert alert-success'><strong>Ruangan ditemukan: </strong> $nama_ruangan</div>";
-
-            echo "<div class='card p-4'>
-                    <h4 class='card-title text-center'>$nama_ruangan</h4>
-                    <div class='table-responsive'>
-                        <table class='table table-bordered'>
-                            <thead class='thead-dark'>
-                                <tr>
-                                    <th>Nama Peralatan</th>
-                                    <th>Jumlah Stok</th>
-                                </tr>
-                            </thead>
-                            <tbody>";
+            echo "<div class='col-12'>
+                    <div class='alert alert-success'><strong>Ruangan ditemukan: </strong> $nama_ruangan</div>
+                  </div>";
 
             while ($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['nama_peralatan']}</td>
-                        <td>{$row['stok']}</td>
-                      </tr>";
+                echo "<div class='col-md-4 mb-4'>
+                        <div class='card'>
+                            <img src='assets/img/peralatan.png' class='card-img-top' alt='Peralatan'>
+                            <div class='card-body text-center'>
+                                <h5 class='card-title'>{$row['nama_peralatan']}</h5>
+                                <p class='card-text'><strong>Stok: </strong>{$row['stok']}</p>
+                            </div>
+                        </div>
+                      </div>";
 
                 // Tambahkan data barang ke dalam QR Code
                 $qr_data .= "- {$row['nama_peralatan']} (Stok: {$row['stok']})\n";
             }
-
-            echo "        </tbody>
-                        </table>
-                    </div>";
 
             // Buat folder qrcodes jika belum ada
             if (!file_exists("qrcodes")) {
@@ -115,20 +118,66 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
             $qr_filename = "qrcodes/" . md5($nama_ruangan) . ".png";
             QRcode::png($qr_data, $qr_filename, QR_ECLEVEL_L, 5);
 
-            echo "  <div class='qr-code'>
-                        <h5>QR Code Ruangan:</h5>
-                        <img src='$qr_filename' alt='QR Code Ruangan'>
-                    </div>
-                </div>";
+            echo "  <div class='col-12 text-center mt-4'>
+                        <div class='card p-4'>
+                            <h5>QR Code Ruangan:</h5>
+                            <img src='$qr_filename' alt='QR Code Ruangan'>
+                        </div>
+                    </div>";
 
         } else {
-            echo "<div class='alert alert-danger'>Ruangan tidak ditemukan.</div>";
+            echo "<div class='col-12'><div class='alert alert-danger'>Ruangan tidak ditemukan.</div></div>";
         }
 
         $stmt->close();
     }
     ?>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 bg-white">
+            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Data Perijinan</h5> -->
+                    <img src="assets/img/ruang.svg" style="height: 320px" class="cover img-fluid">
+                    <h5 class="card-text text-center mt-3 mb-3">Melihat data ruangan</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="data-perijinan.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Data Kedatangan</h5> -->
+                    <img src="assets/img/unit.svg" style="height: 320px" class="cover img-fluid">
+                    <h5 class="card-text text-center mt-3 mb-3">Melihat data unit</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="data-kedatangan.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Perijinan Laptop</h5> -->
+                    <img src="assets/img/taking-notes.svg" style="height: 320px" class="cover img-fluid">
+                    <h5 class="card-text text-center mt-3 mb-3">Perijinan membawa laptop</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="form-perijinan-laptop.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Ajukan Perijinan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php  
+    include "footer.php";
+?>
 </div>
+
 
 </body>
 </html>

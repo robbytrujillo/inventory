@@ -1,14 +1,10 @@
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="col-md-6 text-center text-md-left">
-                <p class="mb-0">Copyright &copy; <?php echo date('Y'); ?> IT Development IHBS </p>
+            <div class="col-md-12 text-center text-md-center">
+                <p class="mb-0"><b>Copyright &copy; <?php echo date('Y'); ?> IT Development IHBS </b></p>
             </div>
-            <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
-            </div>
+            
         </div>
     </div>
 </footer>
