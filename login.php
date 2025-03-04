@@ -47,11 +47,12 @@
                 <main>
                     <br><br>
                     <div class="container mt-5">
-                        
+                    
                         <div class="row justify-content-center">
                             <div class="col-lg-4">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <img src="./assets/img/inventory-logo.png" style="width: 200px; margin-left: 25%; margin-top: 5%">
+                                    <!-- <a href="index.php" class="btn btn-outline-success" style="margin: auto;">Kembali</a> -->
                                     <!-- <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div> -->
                                     <div class="card-body">
                                         <form method="post">
@@ -70,19 +71,21 @@
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <!-- <div class="form-floating mb-3"> -->
                                                 <!-- <a class="small" href="password.html">Forgot Password?</a> -->
-                                                <button class="btn btn-success btn-lg btn-block" tabindex="15" style="font-size: medium; margin: auto" name="login"><b>Log In</b></button>
-                                            
+                                                <button class="btn btn-success btn-lg btn-block rounded-pill" tabindex="15" style="font-size: medium; margin: auto" name="login">🔐 <b>Log In</b></button>
+                                                <a href="index.php" class="btn btn-outline-success btn-lg rounded-pill" style="font-size: medium; margin: auto;"><b>Kembali</b></a>                                   
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small">Copyright &copy; IT Development IHBS 2025 </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
+                
             </div>
             <!-- <div id="layoutAuthentication_footer">
                 <footer class="py-4 bg-light mt-auto">
@@ -99,6 +102,7 @@
                 </footer>
             </div> -->
         </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>
