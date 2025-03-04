@@ -134,18 +134,6 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
     <?php endif; ?>
 </div>
 
-<!-- <script>
-function printQRCode() {
-    var qrWindow = window.open('', '_blank');
-    qrWindow.document.write('<html><head><title>Cetak QR Code</title></head><body>');
-    qrWindow.document.write('<img src="' + document.getElementById('qrImage').src + '" style="width:300px;">');
-    qrWindow.document.write('<script>window.onload = function() { window.print(); window.close(); }<' + '/script>');
-    qrWindow.document.write('</body></html>');
-    qrWindow.document.close();
-}
-</script> -->
-
-
     <div class="row">
         <div class="col-md-4 bg-white">
             <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
@@ -166,7 +154,7 @@ function printQRCode() {
                     <img src="assets/img/unit.svg" style="height: 320px" class="cover img-fluid">
                     <h5 class="card-text text-center mt-3 mb-3">Melihat data unit</h5>
                     <div class="d-flex justify-content-center">
-                        <a href="data-kedatangan.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                        <a href="unit-user.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
                     </div>
                 </div>
             </div>
@@ -189,6 +177,26 @@ function printQRCode() {
     include "footer.php";
 ?>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+function loadData(url) {
+    $('#modalContent').html('<p class="text-center">Loading data...</p>'); // Placeholder saat data dimuat
+
+    $.ajax({
+        url: url,
+        method: "GET",
+        success: function(response) {
+            $('#modalContent').html(response); // Masukkan konten ke modal
+        },
+        error: function() {
+            $('#modalContent').html('<p class="text-center text-danger">Gagal memuat data.</p>');
+        }
+    });
+}
+</script>
 
 <script>
 function printQRCode() {
