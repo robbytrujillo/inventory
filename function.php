@@ -2,7 +2,11 @@
 session_start();
 
 // connect database
-$conn = mysqli_connect("localhost", "root", "","inventory");
+// $conn = mysqli_connect("localhost", "root", "","inventory");
+
+include "koneksi.php"; // Koneksi database
+include "phpqrcode/qrlib.php"; // Pastikan path benar
+
 
 // menambah peralatan baru
 if (isset($_POST['addnewperalatan'])) {

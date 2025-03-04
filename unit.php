@@ -41,7 +41,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="dashboard-stok-peralatan.php">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard"></i></div>
                                 Stok Peralatan
                             </a>
@@ -58,7 +58,7 @@
                                 Peminjaman Peralatan
                             </a>
                             <a class="nav-link" href="unit.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hotel"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
                                 Unit
                             </a>
                             <a class="nav-link" href="user.php">

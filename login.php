@@ -14,7 +14,7 @@
 
         if ($hitung > 0) {
             $_SESSION['log'] = 'True';
-            header('location:index.php');
+            header('location: dashboard-stok-peralatan.php');
         } else {
             header('location: login.php');
         }
@@ -23,7 +23,7 @@
     if (!isset($_SESSION['log'])) {
         // 
     } else {
-        header('location:index.php');
+        header('location:dashboard-stok-peralatan.php');
     }
 ?>
 
