@@ -86,7 +86,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
                     $qr_data = "Ruangan: $nama_ruangan\n\nDaftar Barang:\n";
 
                     echo "<div class='col-12'>
-                            <div class='alert alert-success'><strong>Ruangan $nama_ruangan </strong> ditemukan, berikut adalah data peralatannya</div>
+                            <div class='alert alert-success'><strong>Ruangan $nama_ruangan </strong> ditemukan, berikut adalah data peralatannya:</div>
                           </div>";
 
                     while ($row = $result->fetch_assoc()) {
