@@ -63,6 +63,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
                                 Unit
                             </a>
+                            <a class="nav-link" href="ruangan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-store-alt"></i></div>
+                                Ruangan
+                            </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User

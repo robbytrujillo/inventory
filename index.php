@@ -142,7 +142,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
                     <img src="assets/img/ruang.svg" style="height: 320px" class="cover img-fluid">
                     <h5 class="card-text text-center mt-3 mb-3">Melihat data ruangan</h5>
                     <div class="d-flex justify-content-center">
-                        <a href="data-perijinan.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                        <a href="ruangan-user.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
                     </div>
                 </div>
             </div>

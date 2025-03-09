@@ -73,8 +73,12 @@
                                 Peminjaman Peralatan
                             </a>
                             <a class="nav-link" href="unit.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                                 Unit
+                            </a>
+                            <a class="nav-link" href="ruangan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-store-alt"></i></div>
+                                Ruangan
                             </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>

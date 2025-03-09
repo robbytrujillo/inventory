@@ -1,6 +1,6 @@
 <?php 
     require 'function.php';
-    require 'cek.php';
+    // require 'cek.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard | User</title>
+        <title>Dashboard | Ruangan</title>
         <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -30,15 +30,15 @@
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
             <!-- Navbar Brand-->
             <!-- <a class="navbar-brand ps-3" href="index.php">Inventory IHBS</a> -->
-            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 2%; margin-top: 0%; margin-right: 5%" href="index.php">
+            <!-- <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 2%; margin-top: 0%; margin-right: 5%" href="index.php"> -->
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
             
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
+                <!-- <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion"> -->
+                    <!-- <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link" href="dashboard-stok-peralatan.php">
@@ -58,12 +58,8 @@
                                 Peminjaman Peralatan
                             </a>
                             <a class="nav-link" href="unit.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
                                 Unit
-                            </a>
-                            <a class="nav-link" href="ruangan.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-store-alt"></i></div>
-                                Ruangan
                             </a>
                             <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
@@ -75,19 +71,20 @@
                                 Logout
                             </a>
                         </div>
-                    </div>
-                </nav>
+                    </div> -->
+                <!-- </nav> -->
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">User</h1>                     
+                        <h1 class="mt-4 text-center">Ruangan</h1>                     
                             <div class="card mb-4">
                                 <div class="card-header">
                                         <!-- Button to Open the Modal -->
-                                        <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
-                                            <b>Tambah User</b>
-                                        </button>
+                                         <a href="index.php" class="btn btn-success btn-md">Kembali</a>
+                                        <!-- <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
+                                            <b>Kembali</b>
+                                        </button> -->
                                         <!-- <a href="export-stok-peralatan.php" class="btn btn-info"><b>Export Data</b></a> -->
                                     </div>
                                     <div class="card-body">
@@ -96,66 +93,66 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Username</th>
-                                                    <th>Email</th>
-                                                    <th>Password</th>
-                                                    <th>Aksi</th>
+                                                    <th>Nama Ruangan</th>
+                                                    <th>Koordinator</th>
+                                                    <th>Unit</th>
+                                                    <!-- <th>Aksi</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
-                                                $ambilsemuadatauser = mysqli_query($conn, "SELECT * FROM user");
+                                                $ambilsemuadataruangan = mysqli_query($conn, "SELECT * FROM ruangan");
                                                 $i = 1;
 
-                                                while($data=mysqli_fetch_array($ambilsemuadatauser)) {                                          
-                                                    $username = $data['username'];
-                                                    $email = $data['email'];
-                                                    $password = $data['password'];
-                                                    $idu = $data['iduser'];
+                                                while($data=mysqli_fetch_array($ambilsemuadataruangan)) {                                          
+                                                    $nama_ruangan = $data['nama_ruangan'];
+                                                    $koordinator = $data['koordinator'];
+                                                    $id_unit = $data['id_unit'];
+                                                    $idruangan = $data['id_ruangan'];
                                                 ?>
                                                 <tr>
                                                     <td><?= $i++; ?></td>
-                                                    <td><?= $username; ?></td>
-                                                    <td><?= $email; ?></td>
-                                                    <td><?= $password; ?></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idu; ?>">
+                                                    <td><?= $nama_ruangan; ?></td>
+                                                    <td><?= $koordinator; ?></td>
+                                                    <td><?= $id_unit; ?></td>
+                                                    <!-- <td>
+                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idunit; ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idu; ?>">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idunit; ?>">
                                                             <i class="fas fa-trash"></i>
                                                         </button>   
-                                                    </td>
+                                                    </td> -->
                                                 </tr>
 
                                                 <!-- Edit Modal -->
-                                                <div class="modal fade" id="edit<?= $idu; ?>">
+                                                <div class="modal fade" id="edit<?= $idunit; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                            <h4 class="modal-title">Ubah User</h4>
+                                                            <h4 class="modal-title">Ubah Unit</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             
                                                             <!-- Modal body -->
                                                             <form method="post">
                                                                 <div class="modal-body">
-                                                                    <label for="username"><b>Username</b></label>
+                                                                    <label for="nama_unit"><b>Nama Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="usernamebaru" value="<?= $username; ?>" class="form-control" placeholder="Username" required>
+                                                                    <input type="text" name="nama_unitbaru" value="<?= $nama_unit; ?>" class="form-control" placeholder="Nama Unit" required>
                                                                     <br>
-                                                                    <label for="email"><b>Email</b></label>
+                                                                    <label for="alamat_unit"><b>Alamat Unit</b></label>
                                                                     <br>
-                                                                    <input type="text" name="emailbaru" value="<?= $email; ?>" placeholder="Email" class="form-control" required>
+                                                                    <input type="text" name="alamat_unitbaru" value="<?= $alamat_unit; ?>" placeholder="Alamat Unit" class="form-control" required>
                                                                     <br>
-                                                                    <label for="password"><b>Password</b></label>
+                                                                    <label for="penanggung_jawab"><b>Penanggung Jawab</b></label>
                                                                     <br>
-                                                                    <input type="text" name="passwordbaru" placeholder="Password" class="form-control" required>
+                                                                    <input type="text" name="penanggung_jawabbaru" value="<?= $penanggung_jawab; ?>" placeholder="Penanggung Jawab" class="form-control" required>
                                                                     <br>
-                                                                    <input type="hidden" name="idu" value="<?= $idu; ?>">
-                                                                    <button type="submit" class="btn btn-warning" name="updateuser"><b>Update</b></button>
+                                                                    <input type="hidden" name="idunit" value="<?= $idunit; ?>">
+                                                                    <button type="submit" class="btn btn-warning" name="updateunit"><b>Update</b></button>
                                                                     <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                                 </div>
                                                             </form>
@@ -164,24 +161,24 @@
                                                 </div>
                                                 
                                                 <!-- Delete Modal -->
-                                                <div class="modal fade" id="delete<?= $idu; ?>">
+                                                <div class="modal fade" id="delete<?= $idunit; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                            <h4 class="modal-title">Hapus User?</h4>
+                                                            <h4 class="modal-title">Hapus Unit?</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             
                                                             <!-- Modal body -->
                                                             <form method="post">
                                                                 <div class="modal-body">
-                                                                    Apakah anda yakin ingin menghapus <b><?= $username; ?></b>?
-                                                                    <input type="hidden" name="idu" value="<?= $idu; ?>">
+                                                                    Apakah anda yakin ingin menghapus <b><?= $nama_unit; ?></b>?
+                                                                    <input type="hidden" name="idunit" value="<?= $idunit; ?>">
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" class="btn btn-danger" name="hapususer"><b>Hapus</b></button>
+                                                                    <button type="submit" class="btn btn-danger" name="hapusunit"><b>Hapus</b></button>
                                                                     <button type="button" class="btn btn-success" data-dismiss="modal"><b>Close</b></button>
                                                                 </div>
                                                             </form>
@@ -198,7 +195,10 @@
                             </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <?php 
+                include "footer.php";
+                ?>
+                <!-- <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; IT Development Inventory IHBS 2025</div>
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                     </div>
-                </footer>
+                </footer> -->
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -227,20 +227,20 @@
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Tambah User</h4>
+                <h4 class="modal-title">Tambah Unit</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
                 <!-- Modal body -->
                 <form method="post">
                     <div class="modal-body">
-                        <input type="text" name="username" placeholder="Username" class="form-control" required>
+                        <input type="text" name="nama_unit" placeholder="Nama Unit" class="form-control" required>
                         <br>
-                        <input type="text" name="email" placeholder="Email" class="form-control" required>
+                        <input type="text" name="alamat_unit" placeholder="Alamat Unit" class="form-control" required>
                         <br>
-                        <input type="password" name="password" placeholder="Password" class="form-control" required>
+                        <input type="text" name="penanggung_jawab" placeholder="Penanggung Jawab" class="form-control" required>
                         <br>
-                        <button type="submit" class="btn btn-success rounded-pill" name="addnewuser"><b>Submit</b></button>
+                        <button type="submit" class="btn btn-success rounded-pill" name="addnewunit"><b>Submit</b></button>
                         <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal"><b>Close</b></button>
                     </div>
                 </form>               
