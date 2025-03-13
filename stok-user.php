@@ -1,6 +1,6 @@
 <?php 
     require 'function.php';
-    require 'cek.php';
+    // require 'cek.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,14 +31,14 @@
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
             <!-- Navbar Brand-->
             <!-- <a class="navbar-brand ps-3" href="index.php">Inventory IHBS</a> -->
-            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 2%; margin-top: 0%; margin-right: 5%" href="index.php">
+            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 15%; margin-top: 0%; margin-right: 5%" href="index.php">
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
             
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <!-- <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
@@ -66,10 +66,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-store-alt"></i></div>
                                 Ruangan
                             </a>
-                            <!-- <a class="nav-link" href="user.php">
+                            <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
-                            </a> -->
+                            </a>
                             <hr />
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-ban"></i></div>
@@ -77,7 +77,7 @@
                             </a>
                         </div>
                     </div>
-                </nav>
+                </nav> -->
             </div>
             <div id="layoutSidenav_content">
                 <main>
@@ -86,10 +86,11 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                         <!-- Button to Open the Modal -->
-                                        <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
+                                        <a href="index.php" class="btn btn-success btn-md rounded-pill">Kembali</a>
+                                        <!-- <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
                                             <b>Tambah Stok Peralatan</b>
-                                        </button>
-                                        <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><b>Export Data</b></a>
+                                        </button> -->
+                                        <!-- <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><b>Export Data</b></a> -->
                                     </div>
                                     <div class="card-body">
                                         <?php 
@@ -113,8 +114,8 @@
                                                 <th>Gambar</th>
                                                 <th>Nama Peralatan</th>
                                                 <th>Deskripsi</th>
-                                                <th>Stok</th>
-                                                <th>Aksi</th>
+                                                <!-- <th>Stok</th>
+                                                <th>Aksi</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -126,7 +127,7 @@
                                                 $gambar = $data['gambar'];                                          
                                                 $nama_peralatan = $data['nama_peralatan'];
                                                 $deskripsi = $data['deskripsi'];
-                                                $stok = $data['stok'];
+                                                // $stok = $data['stok'];
                                                 $idp = $data['id_peralatan'];
 
                                                 // cek ada gambar atau tidak
@@ -144,15 +145,15 @@
                                                 <td><?= $img; ?></td>
                                                 <td><strong><a href="detail.php?id=<?= $idp; ?>"><?= $nama_peralatan; ?></a></strong></td>
                                                 <td><?= $deskripsi; ?></td>
-                                                <td><?= $stok; ?></td>
-                                                <td>
+                                                <!-- <td><?= $stok; ?></td> -->
+                                                <!-- <td>
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idp; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idp; ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>   
-                                                </td>
+                                                </td> -->
                                             </tr>
 
                                             <!-- Edit Modal -->

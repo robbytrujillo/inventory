@@ -82,13 +82,17 @@
                                 Peminjaman Peralatan
                             </a>
                             <a class="nav-link" href="unit.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
                                 Unit
                             </a>
-                            <a class="nav-link" href="user.php">
+                            <a class="nav-link" href="ruangan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-store-alt"></i></div>
+                                Ruangan
+                            </a>
+                            <!-- <a class="nav-link" href="user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 User
-                            </a>
+                            </a> -->
                             <hr />
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-ban"></i></div>

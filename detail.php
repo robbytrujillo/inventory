@@ -70,7 +70,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="dashboard-stok-peralatan.php">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard"></i></div>
                                 Stok Peralatan
                             </a>
@@ -82,9 +82,9 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-right"></i></div>
                                 Peralatan Keluar
                             </a>
-                            <a class="nav-link" href="user.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                                User
+                            <a class="nav-link" href="dashboard-stok-peralatan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-arrow-left"></i></div>
+                                Kembali
                             </a>
                             <hr />
                             <a class="nav-link" href="logout.php">

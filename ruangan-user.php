@@ -30,7 +30,7 @@
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
             <!-- Navbar Brand-->
             <!-- <a class="navbar-brand ps-3" href="index.php">Inventory IHBS</a> -->
-            <!-- <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 2%; margin-top: 0%; margin-right: 5%" href="index.php"> -->
+            <img src="./assets/img/inventory-logo.png" style="width: 120px; margin-left: 15%; margin-top: 0%; margin-right: 5%" href="index.php">
             <!-- Sidebar Toggle-->
             <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
             
@@ -81,7 +81,7 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                         <!-- Button to Open the Modal -->
-                                         <a href="index.php" class="btn btn-success btn-md">Kembali</a>
+                                         <a href="index.php" class="btn btn-success btn-md rounded-pill">Kembali</a>
                                         <!-- <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#myModal">
                                             <b>Kembali</b>
                                         </button> -->
@@ -95,7 +95,7 @@
                                                     <th>No</th>
                                                     <th>Nama Ruangan</th>
                                                     <th>Koordinator</th>
-                                                    <th>Unit</th>
+                                                    <!-- <th>Unit</th> -->
                                                     <!-- <th>Aksi</th> -->
                                                 </tr>
                                             </thead>
@@ -107,14 +107,14 @@
                                                 while($data=mysqli_fetch_array($ambilsemuadataruangan)) {                                          
                                                     $nama_ruangan = $data['nama_ruangan'];
                                                     $koordinator = $data['koordinator'];
-                                                    $id_unit = $data['id_unit'];
+                                                    // $nama_unit = $data['nama_unit'];
                                                     $idruangan = $data['id_ruangan'];
                                                 ?>
                                                 <tr>
                                                     <td><?= $i++; ?></td>
                                                     <td><?= $nama_ruangan; ?></td>
                                                     <td><?= $koordinator; ?></td>
-                                                    <td><?= $id_unit; ?></td>
+                                                    <!-- <td><?= $nama_unit; ?></td> -->
                                                     <!-- <td>
                                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idunit; ?>">
                                                             <i class="fas fa-edit"></i>
