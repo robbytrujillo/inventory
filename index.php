@@ -11,6 +11,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
     <title>Index | Inventory</title>
     <link rel="icon" type="image/x-icon" href="assets/img/ihbs-logo.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style-hoverzoom.css">
     <style>
         body {
             background-color: #f8f9fa;
