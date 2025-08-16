@@ -536,34 +536,38 @@ if (isset($_POST['peralatankembali'])) {
     }
     
     // Update Data Ruangan
-    if (isset($_POST['updateruangan'])) {
-        $nama_ruanganbaru = $_POST['nama_ruanganbaru'];
-        $koordinatorbaru = $_POST['koordinatorbaru'];
-        $id_unit = $_POST['id_unit'];
-    
-        $queryupdateruangan = mysqli_query($conn, "UPDATE unit SET nama_unit= '$nama_unitbaru', alamat_unit= '$alamat_unitbaru', penanggung_jawab= '$penanggung_jawabbaru' WHERE id_unit='$idunit'");
-    
-        if ($queryupdateunit) {
-            // if update berhasil
-            header('location: unit.php');
-        } else {
-            // if update gagal
-            header('location: unit.php' );
-        }
+    if(isset($_POST['updateruangan'])) {
+    $idruangan     = $_POST['idruangan'];
+    $nama_ruanganbaru  = $_POST['nama_ruanganbaru'];
+    $koordinatorbaru  = $_POST['koordinatorbaru'];
+    $id_unitbaru   = $_POST['id_unitbaru']; // <-- ambil dari form select
+
+    $queryupdateruangan = mysqli_query($conn, "UPDATE ruangan 
+                                   SET nama_ruangan='$nama_ruanganbaru',
+                                       koordinator='$koordinatorbaru',
+                                       id_unit='$id_unitbaru'
+                                   WHERE id_ruangan='$idruangan'");
+    if($queryupdateruangan){
+        header('location:ruangan.php');
+    } else {
+        echo "Update gagal: " . mysqli_error($conn);
+        header('location:ruangan.php');
     }
+}
+
     
-    // Menghapus data unit
-    if (isset($_POST['hapusunit'])) {
-        $idunit = $_POST['idunit'];
+    // Menghapus data ruangan
+    if (isset($_POST['hapusruangan'])) {
+        $idruangan = $_POST['idruangan'];
     
-        $querydeleteunit = mysqli_query($conn, "DELETE FROM unit WHERE id_unit='$idunit'");
+        $querydeleteruangan = mysqli_query($conn, "DELETE FROM ruangan WHERE id_ruangan='$idruangan'");
     
-        if ($queryudeleteunit) {
+        if ($queryudeleteruangan) {
             // if update berhasil
-            header('location: unit.php');
+            header('location: ruangan.php');
         } else {
             // if update gagal
-            header('location: unit.php' );
+            header('location: ruangan.php' );
         }
     }
 ?>

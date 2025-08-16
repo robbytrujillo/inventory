@@ -109,19 +109,20 @@
                                 </thead>
                                 <tbody>
                                     <?php 
-                                                $ambilsemuadataruangan = mysqli_query($conn, "
-                                                    SELECT r.id_ruangan, r.nama_ruangan, r.koordinator, r.id_unit, u.nama_unit, u.alamat_unit, u.penanggung_jawab 
-                                                    FROM ruangan r 
-                                                    JOIN unit u ON r.id_unit = u.id_unit
-                                                ");
-                                                $i = 1;
+                                        $ambilsemuadataruangan = mysqli_query($conn, "
+                                            SELECT r.id_ruangan, r.nama_ruangan, r.koordinator, r.id_unit, u.nama_unit, u.alamat_unit, u.penanggung_jawab 
+                                            FROM ruangan r 
+                                            JOIN unit u ON r.id_unit = u.id_unit
+                                        ");
+                                        $i = 1;
 
-                                                while($data=mysqli_fetch_array($ambilsemuadataruangan)) {                                          
-                                                    $nama_ruangan= $data['nama_ruangan'];
-                                                    $koordinator = $data['koordinator'];
-                                                    // $penanggung_jawab = $data['penanggung_jawab'];
-                                                    $nama_unit = $data['nama_unit'];
-                                                ?>
+                                        while($data=mysqli_fetch_array($ambilsemuadataruangan)) {                                          
+                                            $nama_ruangan= $data['nama_ruangan'];
+                                            $koordinator = $data['koordinator'];
+                                            $idunit      = $data['id_unit'];   // <-- simpan id_unit ruangan saat ini
+                                            $nama_unit = $data['nama_unit'];
+                                            $idruangan = $data['id_ruangan'];
+                                        ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $nama_ruangan; ?></td>
@@ -157,7 +158,7 @@
                                                         <label for="nama_ruangan"><b>Nama Ruangan</b></label>
                                                         <br>
                                                         <input type="text" name="nama_ruanganbaru"
-                                                            value="<?= $nama_unit; ?>" class="form-control"
+                                                            value="<?= $nama_ruangan; ?>" class="form-control"
                                                             placeholder="Nama Unit" required>
                                                         <br>
                                                         <label for="koordinator"><b>Koordinator</b></label>
@@ -166,16 +167,31 @@
                                                             value="<?= $koordinator; ?>" placeholder="Koordinator"
                                                             class="form-control" required>
                                                         <br>
-                                                        <label for="penanggung_jawab"><b>Penanggung Jawab</b></label>
+                                                        <label for="nama_unit"><b>Nama Unit</b></label>
                                                         <br>
-                                                        <input type="text" name="penanggung_jawabbaru"
+
+                                                        <select name="id_unitbaru" class="form-control" required>
+                                                            <?php
+                                                            $ambilunit = mysqli_query($conn, "SELECT * FROM unit");
+                                                            while($unit = mysqli_fetch_array($ambilunit)) {
+                                                                $id_unit   = $unit['id_unit'];
+                                                                $nama_unit_option = $unit['nama_unit'];
+                                                                $selected = ($id_unit == $idunit) ? "selected" : "";
+                                                                echo "<option value='$id_unit' $selected>$nama_unit_option</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+
+                                                        <br>
+                                                        <!-- <input type="text" name="penanggung_jawabbaru"
                                                             value="<?= $penanggung_jawab; ?>"
                                                             placeholder="Penanggung Jawab" class="form-control"
                                                             required>
-                                                        <br>
-                                                        <input type="hidden" name="idunit" value="<?= $idunit; ?>">
+                                                        <br> -->
+                                                        <input type="hidden" name="idruangan"
+                                                            value="<?= $idruangan; ?>">
                                                         <button type="submit" class="btn btn-warning"
-                                                            name="updateunit"><b>Update</b></button>
+                                                            name="updateruangan"><b>Update</b></button>
                                                         <button type="button" class="btn btn-success"
                                                             data-dismiss="modal"><b>Close</b></button>
                                                     </div>
@@ -185,13 +201,13 @@
                                     </div>
 
                                     <!-- Delete Modal -->
-                                    <div class="modal fade" id="delete<?= $idunit; ?>">
+                                    <div class="modal fade" id="delete<?= $idruangan; ?>">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Unit?</h4>
+                                                    <h4 class="modal-title">Hapus ruangan?</h4>
                                                     <button type="button" class="close"
                                                         data-dismiss="modal">&times;</button>
                                                 </div>
@@ -199,12 +215,13 @@
                                                 <!-- Modal body -->
                                                 <form method="post">
                                                     <div class="modal-body">
-                                                        Apakah anda yakin ingin menghapus <b><?= $nama_unit; ?></b>?
-                                                        <input type="hidden" name="idunit" value="<?= $idunit; ?>">
+                                                        Apakah anda yakin ingin menghapus <b><?= $nama_ruangan; ?></b>?
+                                                        <input type="hidden" name="idruangan"
+                                                            value="<?= $idruangan; ?>">
                                                         <br>
                                                         <br>
                                                         <button type="submit" class="btn btn-danger"
-                                                            name="hapusunit"><b>Hapus</b></button>
+                                                            name="hapusruangan"><b>Hapus</b></button>
                                                         <button type="button" class="btn btn-success"
                                                             data-dismiss="modal"><b>Close</b></button>
                                                     </div>
