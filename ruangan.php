@@ -117,11 +117,11 @@
                                         $i = 1;
 
                                         while($data=mysqli_fetch_array($ambilsemuadataruangan)) {                                          
-                                            $nama_ruangan= $data['nama_ruangan'];
-                                            $koordinator = $data['koordinator'];
-                                            $idunit      = $data['id_unit'];   // <-- simpan id_unit ruangan saat ini
-                                            $nama_unit = $data['nama_unit'];
-                                            $idruangan = $data['id_ruangan'];
+                                            $nama_ruangan = $data['nama_ruangan'];
+                                            $koordinator  = $data['koordinator'];
+                                            $idunit       = $data['id_unit'];   // <-- simpan id_unit ruangan saat ini
+                                            $nama_unit    = $data['nama_unit'];
+                                            $idruangan    = $data['id_ruangan'];
                                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
