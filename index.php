@@ -5,6 +5,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,59 +14,66 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style-hoverzoom.css">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .card {
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .qr-code {
-            text-align: center;
-        }
-        .qr-code img {
-            max-width: 150px;
-            margin-top: 10px;
-        }
-        .search-box {
-            max-width: 400px;
-            margin: auto;
-        }
-        .error-message {
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
-        }
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .qr-code {
+        text-align: center;
+    }
+
+    .qr-code img {
+        max-width: 150px;
+        margin-top: 10px;
+    }
+
+    .search-box {
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .error-message {
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;
+    }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <!-- <h2 class="text-success">📦 Sistem Inventaris Sekolah</h2> -->
-        <img src="./assets/img/inventory-logo.png" style="width: 150px; margin-left: 0%; margin-top: 0%">
-        <a href="login.php" class="btn btn-outline-success rounded-pill">🔐 <b>Login</b></a>
-    </div>
-
-   
-
-    <form method="GET" class="search-box">
-        <div class="input-group mb-4">
-            <input type="text" name="nama_ruangan" class="form-control" placeholder="🔍 Cari ruangan..." required>
-            <div class="input-group-append">
-                <button class="btn btn-success" type="submit">Cari</button>
-            </div>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- <h2 class="text-success">📦 Sistem Inventaris Sekolah</h2> -->
+            <img src="./assets/img/inventory-logo.png" style="width: 150px; margin-left: 0%; margin-top: 0%">
+            <a href="login.php" class="btn btn-outline-success rounded-pill">🔐 <b>Login</b></a>
         </div>
-    </form>
 
-    <div class="row">
-    <!-- Bagian Daftar Peralatan -->
-    <div class="col-md-9">
+
+
+        <form method="GET" class="search-box">
+            <div class="input-group mb-4">
+                <input type="text" name="nama_ruangan" class="form-control" placeholder="🔍 Cari ruangan..." required>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Cari</button>
+                </div>
+            </div>
+        </form>
+
         <div class="row">
-            <?php
+            <!-- Bagian Daftar Peralatan -->
+            <div class="col-md-9">
+                <div class="row">
+                    <?php
             if (isset($_GET['nama_ruangan'])) {
                 $nama_ruangan = $_GET['nama_ruangan'];
 
@@ -120,95 +128,100 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
                 $stmt->close();
             }
             ?>
-        </div>
-    </div>
-
-    <!-- Bagian QR Code -->
-    <?php if (isset($qr_filename)) : ?>
-        <div class="col-md-3 text-center">
-            <div class="card p-4">
-                <h5>QR Code Ruangan:</h5>
-                <img id="qrImage" src="<?= $qr_filename ?>" alt="QR Code Ruangan">
-                <button class="btn btn-success mt-3" onclick="printQRCode()">🖨 Cetak QR Code</button>
+                </div>
             </div>
-        </div>
-    <?php endif; ?>
-</div>
 
-    <div class="row">
-        <div class="col-md-4 bg-white">
-            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Data Perijinan</h5> -->
-                    <img src="assets/img/ruang.svg" style="height: 320px" class="cover img-fluid">
-                    <h5 class="card-text text-center mt-3 mb-3">Melihat data ruangan</h5>
-                    <div class="d-flex justify-content-center">
-                        <a href="ruangan-user.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+            <!-- Bagian QR Code -->
+            <?php if (isset($qr_filename)) : ?>
+            <div class="col-md-3 text-center">
+                <div class="card p-4">
+                    <h5>QR Code Ruangan:</h5>
+                    <img id="qrImage" src="<?= $qr_filename ?>" alt="QR Code Ruangan">
+                    <button class="btn btn-success mt-3" onclick="printQRCode()">🖨 Cetak QR Code</button>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 bg-white">
+                <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Data Perijinan</h5> -->
+                        <img src="assets/img/ruang.svg" style="width: 100%; height: 320px" class="cover img-fluid">
+                        <h5 class="card-text text-center mt-3 mb-3">Melihat data ruangan</h5>
+                        <div class="d-flex justify-content-center">
+                            <a href="ruangan-user.php"
+                                class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Data Kedatangan</h5> -->
+                        <img src="assets/img/unit.svg" style="width: 100%; height: 320px" class="cover img-fluid">
+                        <h5 class="card-text text-center mt-3 mb-3">Melihat data unit</h5>
+                        <div class="d-flex justify-content-center">
+                            <a href="unit-user.php"
+                                class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Perijinan Laptop</h5> -->
+                        <img src="assets/img/taking-notes.svg" style="width: 100%; height: 320px"
+                            class="cover img-fluid">
+                        <h5 class="card-text text-center mt-3 mb-3">Melihat Stok Peralatan</h5>
+                        <div class="d-flex justify-content-center">
+                            <a href="stok-user.php"
+                                class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Data Kedatangan</h5> -->
-                    <img src="assets/img/unit.svg" style="height: 320px" class="cover img-fluid">
-                    <h5 class="card-text text-center mt-3 mb-3">Melihat data unit</h5>
-                    <div class="d-flex justify-content-center">
-                        <a href="unit-user.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3 shadow-sm rounded-lg border-0">
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Perijinan Laptop</h5> -->
-                    <img src="assets/img/taking-notes.svg" style="height: 320px" class="cover img-fluid">
-                    <h5 class="card-text text-center mt-3 mb-3">Melihat Stok Peralatan</h5>
-                    <div class="d-flex justify-content-center">
-                        <a href="stok-user.php" class="btn btn-outline-success btn-block font-weight-bold rounded-pill">Lihat Data</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <?php  
+        <?php  
     include "footer.php";
 ?>
-</div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-function loadData(url) {
-    $('#modalContent').html('<p class="text-center">Loading data...</p>'); // Placeholder saat data dimuat
+    <script>
+    function loadData(url) {
+        $('#modalContent').html('<p class="text-center">Loading data...</p>'); // Placeholder saat data dimuat
 
-    $.ajax({
-        url: url,
-        method: "GET",
-        success: function(response) {
-            $('#modalContent').html(response); // Masukkan konten ke modal
-        },
-        error: function() {
-            $('#modalContent').html('<p class="text-center text-danger">Gagal memuat data.</p>');
-        }
-    });
-}
-</script>
+        $.ajax({
+            url: url,
+            method: "GET",
+            success: function(response) {
+                $('#modalContent').html(response); // Masukkan konten ke modal
+            },
+            error: function() {
+                $('#modalContent').html('<p class="text-center text-danger">Gagal memuat data.</p>');
+            }
+        });
+    }
+    </script>
 
-<script>
-function printQRCode() {
-    var qrWindow = window.open('', '_blank');
-    qrWindow.document.write('<html><head><title>Cetak QR Code</title></head><body>');
-    qrWindow.document.write('<img src="' + document.getElementById('qrImage').src + '" style="width:750px;">');
-    qrWindow.document.write('<script>window.onload = function() { window.print(); window.close(); }<' + '/script>');
-    qrWindow.document.write('</body></html>');
-    qrWindow.document.close();
-}
-</script>
+    <script>
+    function printQRCode() {
+        var qrWindow = window.open('', '_blank');
+        qrWindow.document.write('<html><head><title>Cetak QR Code</title></head><body>');
+        qrWindow.document.write('<img src="' + document.getElementById('qrImage').src + '" style="width:750px;">');
+        qrWindow.document.write('<script>window.onload = function() { window.print(); window.close(); }<' + '/script>');
+        qrWindow.document.write('</body></html>');
+        qrWindow.document.close();
+    }
+    </script>
 
 </body>
+
 </html>
