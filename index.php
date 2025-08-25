@@ -187,8 +187,9 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
         </div>
 
         <?php  
-    include "footer.php";
-?>
+            include "footer.php";
+        ?>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
