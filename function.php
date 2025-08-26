@@ -39,17 +39,17 @@ if (isset($_POST['addnewperalatan'])) {
 
                 $addtotable = mysqli_query($conn, "INSERT INTO stok_peralatan (nama_peralatan, deskripsi, stok, gambar) VALUES ('$nama_peralatan', '$deskripsi', '$stok', '$image')");
                 if ($addtotable) {
-                    header('location: index.php');
+                    header('location: dashboard-stok-peralatan.php');
                 } else {
                     echo "Gagal";
-                    header('location: index.php');
+                    header('location: dashboard-stok-peralatan.php');
                 }
             } else {
                 //  kalau filenya lebih dari 15mb
                 echo '
                     <script>
                         alert("Ukuran terlalu besar");
-                        window.location.href="index.php";
+                        window.location.href="dashboard-stok-peralatan.php";
                     </script>
             ';
             }
@@ -58,7 +58,7 @@ if (isset($_POST['addnewperalatan'])) {
             echo '
                 <script>
                     alert("File harus png/jpg");
-                    window.location.href="index.php";
+                    window.location.href="dashboard-stok-peralatan.php";
                 </script>
             ';
         }
@@ -153,20 +153,20 @@ if (isset($_POST['updateperalatan'])) {
         // jika tidak ingin upload
         $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi' WHERE id_peralatan='$idp'");
         if ($update) {
-            header('location: index.php');
+            header('location: dashboard-stok-peralatan.php');
         } else {
             echo "gagal";
-            header('location: index.php');
+            header('location: dashboard-stok-peralatan.php');
         }
     } else {
         // jika ingin upload
         move_uploaded_file($file_tmp, 'images/'.$image);
         $update = mysqli_query($conn, "UPDATE stok_peralatan SET nama_peralatan='$nama_peralatan', deskripsi='$deskripsi', gambar='$image' WHERE id_peralatan='$idp'");
         if ($update) {
-            header('location: index.php');
+            header('location: dashboard-stok-peralatan.php');
         } else {
             echo "gagal";
-            header('location: index.php');
+            header('location: dashboard-stok-peralatan.php');
         }
     }
 }

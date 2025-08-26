@@ -94,7 +94,7 @@
                                 data-target="#myModal"><i class="fa-solid fa-plus"></i>
                                 <b>Tambah Stok</b>
                             </button>
-                            <button class="btn btn-warning rounded-pill" data-toggle="modal"
+                            <button class="btn btn-primary rounded-pill" data-toggle="modal"
                                 data-target="#uploadCSVModal">
                                 <i class="fas fa-upload"></i>
                                 <b>Upload CSV</b></button>
