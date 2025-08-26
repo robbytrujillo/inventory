@@ -91,14 +91,17 @@
                         <div class="card-header">
                             <!-- Button to Open the Modal -->
                             <button type="button" class="btn btn-success rounded-pill" data-toggle="modal"
-                                data-target="#myModal">
-                                <b>Tambah Stok Peralatan</b>
+                                data-target="#myModal"><i class="fa-solid fa-plus"></i>
+                                <b>Tambah Stok</b>
                             </button>
                             <button class="btn btn-warning rounded-pill" data-toggle="modal"
-                                data-target="#uploadCSVModal"><b>Upload CSV</b></button>
-                            <a href="template_csvstok.csv" class="btn btn-secondary rounded-pill" download>Template
-                                CSV</a>
-                            <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><b>Export Data</b></a>
+                                data-target="#uploadCSVModal">
+                                <i class="fas fa-upload"></i>
+                                <b>Upload CSV</b></button>
+                            <a href="template_csvstok.csv" class="btn btn-secondary rounded-pill" download>
+                                <i class="fas fa-list"></i> <b>Template CSV</b></a>
+                            <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><i
+                                    class="fas fa-file-export"></i> <b>Export Data</b></a>
                         </div>
                         <div class="card-body">
                             <?php 
