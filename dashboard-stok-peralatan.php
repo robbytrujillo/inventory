@@ -97,7 +97,7 @@
                             <button class="btn btn-primary rounded-pill" data-toggle="modal"
                                 data-target="#uploadCSVModal">
                                 <i class="fas fa-upload"></i>
-                                <b>Upload CSV</b></button>
+                                <b>Upload Data</b></button>
                             <a href="template_csvstok.csv" class="btn btn-secondary rounded-pill" download>
                                 <i class="fas fa-list"></i> <b>Template CSV</b></a>
                             <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><i
