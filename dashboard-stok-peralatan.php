@@ -219,7 +219,7 @@
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="uploadCSVModalLabel">Upload Data Siswa
                                                         dari CSV</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
+                                                    <button type="button" class="close " data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -233,7 +233,7 @@
                                                                 name="csv_file" accept=".csv" required>
                                                         </div>
                                                         <button type="submit" name="upload_csv"
-                                                            class="btn btn-primary">Upload</button>
+                                                            class="btn btn-primary rounded-pill">Upload</button>
                                                     </form>
                                                 </div>
                                             </div>
