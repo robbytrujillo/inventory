@@ -100,6 +100,8 @@
                                 <b>Upload Data</b></button>
                             <a href="template_csvstok.csv" class="btn btn-secondary rounded-pill" download>
                                 <i class="fas fa-list"></i> <b>Template CSV</b></a>
+                            <!-- <a href="template-excel.xlsx" class="btn btn-secondary rounded-pill" download>
+                                <i class="fas fa-list"></i> <b>Template</b></a> -->
                             <a href="export-stok-peralatan.php" class="btn btn-info rounded-pill"><i
                                     class="fas fa-file-export"></i> <b>Export Data</b></a>
                         </div>
@@ -233,8 +235,15 @@
                                                                 name="csv_file" accept=".csv" required>
                                                         </div>
                                                         <button type="submit" name="upload_csv"
-                                                            class="btn btn-primary rounded-pill">Upload</button>
+                                                            class="btn btn-primary rounded-pill"><b>Upload</b></button>
                                                     </form>
+                                                    <!-- <form action="upload-excel.php" method="post"
+                                                        enctype="multipart/form-data">
+                                                        <input type="file" name="excel_file" accept=".xlsx" required>
+                                                        <button type="submit" name="upload-excel">Upload
+                                                            Excel</button>
+                                                    </form> -->
+
                                                 </div>
                                             </div>
                                         </div>
@@ -288,8 +297,8 @@
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
