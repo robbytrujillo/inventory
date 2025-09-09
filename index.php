@@ -103,7 +103,7 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
                         echo "<div class='col-md-4 mb-4'>
                                 <div class='card'>
                                     <div class='card-body text-center'>
-                                        <h5 class='card-title'>{$row['nama_peralatan']}</h5>
+                                        <h5 class='card-title'><b>{$row['nama_peralatan']}</b></h5>
                                         <p class='card-text'><strong>Stok: </strong>{$row['stok']}</p>
                                     </div>
                                 </div>
@@ -135,9 +135,9 @@ include "phpqrcode/qrlib.php"; // Pastikan path benar
             <?php if (isset($qr_filename)) : ?>
             <div class="col-md-3 text-center">
                 <div class="card p-4">
-                    <h5>QR Code Ruangan:</h5>
+                    <h5><b>QR Code Ruangan</b></h5>
                     <img id="qrImage" src="<?= $qr_filename ?>" alt="QR Code Ruangan">
-                    <button class="btn btn-success mt-3" onclick="printQRCode()">🖨 Cetak QR Code</button>
+                    <button class="btn btn-success mt-3" onclick="printQRCode()"><b>🖨 Cetak QR Code</b></button>
                 </div>
             </div>
             <?php endif; ?>
